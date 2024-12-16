@@ -1,0 +1,12 @@
+# Exported from Render on 2024-12-16T20:04:45Z
+services:
+- type: web
+  name: kino-bio-projekt
+  runtime: node
+  repo: https://github.com/Klumpish/kino-bio-projekt
+  branch: feat/api-server-setup
+  plan: free
+  region: frankfurt
+  buildCommand: yarn
+  startCommand: node server.cjs
+version: "1"
