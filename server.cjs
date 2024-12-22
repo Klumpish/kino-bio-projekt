@@ -17,7 +17,7 @@ const movies = [
     "date": "2024-12-28", 
     "price": 150, 
     "seatsAvailable": 20,
-    "image": "https://placehold.co/300x450?text=Film+1",
+    "image": "https://lh3.googleusercontent.com/d/17UW1YyDs7qq2ERyIWUIW2Z4xBD0ik-pv=s220?authuser=0",
     "year": 1944,
     "rating": 87
   },
@@ -28,7 +28,7 @@ const movies = [
     "date": "2024-12-29", 
     "price": 150, 
     "seatsAvailable": 15,
-    "image": "https://placehold.co/300x450?text=Film+2",
+    "image": "https://lh3.googleusercontent.com/d/1sKnahWsC0cI_jSp3Gy7Cy0OMWozaLwKI=s220?authuser=0",
     "year": 1940,
     "rating": 91
   },
@@ -39,7 +39,7 @@ const movies = [
     "date": "2024-12-30", 
     "price": 200, 
     "seatsAvailable": 18,
-    "image": "https://placehold.co/300x450?text=Film+3",
+    "image": "https://lh3.googleusercontent.com/d/1pO3g72ClZBVL0gPS4hkgGFgugstaRQcw=s220?authuser=0",
     "year": 2023,
     "rating": 92
   },
@@ -50,7 +50,7 @@ const movies = [
     "date": "2024-12-31", 
     "price": 200, 
     "seatsAvailable": 25,
-    "image": "https://placehold.co/300x450?text=Film+4",
+    "image": "https://lh3.googleusercontent.com/d/1Ja_Wydrt9kGf5Xp_iCTAn_TXtu9sJQQ2=s220?authuser=0",
     "year": 2015,
     "rating": 75
   },
@@ -61,7 +61,7 @@ const movies = [
   "date": "2024-12-28", 
   "price": 150, 
   "seatsAvailable": 12,
-  "image": "https://placehold.co/300x450?text=Film+5",
+  "image": "https://lh3.googleusercontent.com/d/1akI_efs51HB21yFoqNtP_LcSUL8N4Q2l=s220?authuser=0",
   "year": 1947,
   "rating": 87
 },
@@ -72,7 +72,7 @@ const movies = [
   "date": "2024-12-29", 
   "price": 150, 
   "seatsAvailable": 15,
-  "image": "https://placehold.co/300x450?text=Film+6",
+  "image": "https://lh3.googleusercontent.com/d/1WVq91eqW-KSXnOeFNbDTeo25Ry7sU8kQ=s220?authuser=0",
   "year": 2019,
   "rating": 92
 },
@@ -83,7 +83,7 @@ const movies = [
   "date": "2024-12-30", 
   "price": 200, 
   "seatsAvailable": 10,
-  "image": "https://placehold.co/300x450?text=Film+7",
+  "image": "https://lh3.googleusercontent.com/d/19OSO_uwfcml15CZnF39WwESqYjoYygVs=s220?authuser=0",
   "year": 1993,
   "rating": 92
 },
@@ -94,7 +94,7 @@ const movies = [
   "date": "2024-12-31", 
   "price": 200, 
   "seatsAvailable": 8,
-  "image": "https://placehold.co/300x450?text=Film+8",
+  "image": "https://lh3.googleusercontent.com/d/1kyJEg2MnU5sY1jSY70Bbjycnm8TFGt-q=s220?authuser=0",
   "year": 2019,
   "rating": 96
 },
@@ -105,7 +105,7 @@ const movies = [
   "date": "2024-12-28", 
   "price": 150, 
   "seatsAvailable": 20,
-  "image": "https://placehold.co/300x450?text=Film+9",
+  "image": "https://lh3.googleusercontent.com/d/1Baf1Mu9J8bl5zs2Cyj3jDS1vtEjjzb-a=s220?authuser=0",
   "year": 2015,
   "rating": 75
 },
@@ -116,7 +116,7 @@ const movies = [
   "date": "2024-12-29", 
   "price": 150, 
   "seatsAvailable": 25,
-  "image": "https://placehold.co/300x450?text=Film+10",
+  "image": "https://lh3.googleusercontent.com/d/19ogjuimlagWUPWe584hf0FXkTnOYG59M=s220?authuser=0",
   "year": 1946,
   "rating": 95
 },
@@ -127,7 +127,7 @@ const movies = [
   "date": "2024-12-30", 
   "price": 200, 
   "seatsAvailable": 18,
-  "image": "https://placehold.co/300x450?text=Film+11",
+  "image": "https://lh3.googleusercontent.com/d/1XNumjiOcPUxUBkxDAU3BXvzB9uT62VBn=s220?authuser=0",
   "year": 1988,
   "rating": 94
 },
@@ -138,7 +138,7 @@ const movies = [
   "date": "2024-12-31", 
   "price": 200, 
   "seatsAvailable": 10,
-  "image": "https://placehold.co/300x450?text=Film+12",
+  "image": "https://lh3.googleusercontent.com/d/15IgqX4CXmfR2DPNYsvMARsR0j8gHiuZw=s220?authuser=0",
   "year": 2022,
   "rating": 81
 },
@@ -160,7 +160,7 @@ const movies = [
   "date": "2024-12-29", 
   "price": 150, 
   "seatsAvailable": 15,
-  "image": "https://placehold.co/300x450?text=Film+14",
+  "image": "https://lh3.googleusercontent.com/d/13wiJhTMtvJT3cvLtqZJDu0-TCdzdRYzK=s220?authuser=0",
   "year": 1994,
   "rating": 84
 },
@@ -182,7 +182,7 @@ const movies = [
   "date": "2024-12-31", 
   "price": 200, 
   "seatsAvailable": 8,
-  "image": "https://placehold.co/300x450?text=Film+16",
+  "image": "https://lh3.googleusercontent.com/d/1W21y_Gm3hjlsD2VCB2jz-0uQkB3e7LwC=s220?authuser=0",
   "year": 2003,
   "rating": 91
 },
@@ -193,7 +193,7 @@ const movies = [
   "date": "2024-12-28", 
   "price": 150, 
   "seatsAvailable": 22,
-  "image": "https://placehold.co/300x450?text=Film+17",
+  "image": "https://lh3.googleusercontent.com/d/1iaobaD-4xB-oGKrm70ZonM4TO91DW_Le=s220?authuser=0",
   "year": 2020,
   "rating": 69
 },
@@ -204,7 +204,7 @@ const movies = [
   "date": "2024-12-29", 
   "price": 150, 
   "seatsAvailable": 18,
-  "image": "https://placehold.co/300x450?text=Film+18",
+  "image": "https://lh3.googleusercontent.com/d/1iD7sWvxCh27YhjqZuB25Wy3qM3r5arGo=s220?authuser=0",
   "year": 1990,
   "rating": 91
 },
@@ -215,7 +215,7 @@ const movies = [
   "date": "2024-12-30", 
   "price": 200, 
   "seatsAvailable": 16,
-  "image": "https://placehold.co/300x450?text=Film+19",
+  "image": "https://lh3.googleusercontent.com/d/1aYPX6uux3-39bwUdpQr5HgRKt9C6pstE=s220?authuser=0",
   "year": 2010,
   "rating": 70
 },
@@ -226,7 +226,7 @@ const movies = [
   "date": "2024-12-31", 
   "price": 200, 
   "seatsAvailable": 25,
-  "image": "https://placehold.co/300x450?text=Film+20",
+  "image": "https://lh3.googleusercontent.com/d/1go7-2L3zM6nH-iy6wz33FHRr-hJBfWU4=s220?authuser=0",
   "year": 1983,
   "rating": 89
 },
@@ -237,7 +237,7 @@ const movies = [
   "date": "2024-12-28", 
   "price": 150, 
   "seatsAvailable": 10,
-  "image": "https://placehold.co/300x450?text=Film+21",
+  "image": "https://lh3.googleusercontent.com/d/1kRd__Y7C5DSbodEpQIAw3lzklez7mf5B=s220?authuser=0",
   "year": 2016,
   "rating": 64
 }
