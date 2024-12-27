@@ -38,17 +38,20 @@
       }
 
       h3 {
+        color: $red;
         grid-row: 2;
         padding: 0.3rem 0 0 0.2rem;
         font-size: 1.5rem;
       }
 
       span {
+        color: $red;
         grid-row: 4;
         padding: 0 0 0 0.2rem;
       }
 
       time {
+        color: $red;
         grid-row: 3;
         grid-column: 1;
         align-self: center;
@@ -60,7 +63,7 @@
         font-size: $font-size-base;
         font-family: $font-family-base;
         color: $red;
-        background-color: $gray;
+        background-color: transparent;
         border: 3px solid $red;
         font-weight: 600;
         cursor: pointer;

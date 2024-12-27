@@ -1,6 +1,6 @@
 @use 'header';
 @use 'variables' as *;
-@import '_main_movie';
+@use '_main_movie';
 
 * {
   margin: 0;
@@ -20,40 +20,40 @@ compiled directly into a CSS file.
 */
 
 body {
-    background-color: $red; 
+  background-color: $red;
 }
 
-// Primary Button 
+// Primary Button
 .primary_button {
-    padding: $btn-padding;
-    font-size: $font-size-base;
-    font-family: $font-family-base;
-    color: $gray;
-    background-color: $red;
-    border: 3px solid $gray;
-    font-weight: 550;
-    cursor: pointer;
-    text-align: center;
+  padding: $btn-padding;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  color: $gray;
+  background-color: $red;
+  border: 3px solid $gray;
+  font-weight: 550;
+  cursor: pointer;
+  text-align: center;
 }
 
 .secondary_button {
-    padding: $btn-padding;
-    font-size: $font-size-base;
-    font-family: $font-family-base;
-    color: $red;
-    background-color: $gray;
-    border: 3px solid $red;
-    font-weight: 600;
-    cursor: pointer;
-    text-align: center;
+  padding: $btn-padding;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  color: $red;
+  background-color: $gray;
+  border: 3px solid $red;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
 }
 
 // Divs to make the background colors different for easier demonstration.
 .button_example1 {
-    padding: 5rem;
+  padding: 5rem;
 }
 
 .button_example2 {
-    background: $gray;
-    padding: 5rem;
+  background: $gray;
+  padding: 5rem;
 }
