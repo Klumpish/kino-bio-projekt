@@ -20,9 +20,7 @@ const movies = [
     "image": "https://lh3.googleusercontent.com/d/17UW1YyDs7qq2ERyIWUIW2Z4xBD0ik-pv=s220?authuser=0",
     "year": 1944,
     "rating": 87, 
-    "genre": [
-      "Musical"
-    ]
+    "genre": "Musical"
   },
   { 
     "id": 2, 
@@ -34,9 +32,7 @@ const movies = [
     "image": "https://lh3.googleusercontent.com/d/1sKnahWsC0cI_jSp3Gy7Cy0OMWozaLwKI=s220?authuser=0",
     "year": 1940,
     "rating": 91, 
-    "genre": [
-      "Romantic Comedy"
-    ]
+    "genre": "Romantic Comedy"
   },
   { 
     "id": 3, 
@@ -48,9 +44,7 @@ const movies = [
     "image": "https://lh3.googleusercontent.com/d/1pO3g72ClZBVL0gPS4hkgGFgugstaRQcw=s220?authuser=0",
     "year": 2023,
     "rating": 92, 
-    "genre": [
-      "Drama"
-    ]
+    "genre": "Drama"
   },
   { 
     "id": 4, 
@@ -62,9 +56,7 @@ const movies = [
     "image": "https://lh3.googleusercontent.com/d/1Ja_Wydrt9kGf5Xp_iCTAn_TXtu9sJQQ2=s220?authuser=0",
     "year": 2015,
     "rating": 75, 
-    "genre": [
-      "Comedy"
-    ]
+    "genre": "Comedy"
   },
   { 
   "id": 5, 
@@ -76,9 +68,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1akI_efs51HB21yFoqNtP_LcSUL8N4Q2l=s220?authuser=0",
   "year": 1947,
   "rating": 87, 
-  "genre": [
-    "Family"
-  ]
+  "genre": "Family"
 },
 { 
   "id": 6, 
@@ -90,9 +80,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1WVq91eqW-KSXnOeFNbDTeo25Ry7sU8kQ=s220?authuser=0",
   "year": 2019,
   "rating": 92, 
-  "genre": [
-    "Drama"
-  ]
+  "genre": "Drama"
 },
 { 
   "id": 7, 
@@ -104,9 +92,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/19OSO_uwfcml15CZnF39WwESqYjoYygVs=s220?authuser=0",
   "year": 1993,
   "rating": 92, 
-  "genre": [
-    "Animation"
-  ]
+  "genre": "Animation"
 },
 { 
   "id": 8, 
@@ -118,9 +104,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1kyJEg2MnU5sY1jSY70Bbjycnm8TFGt-q=s220?authuser=0",
   "year": 2019,
   "rating": 96, 
-  "genre": [
-    "Animation"
-  ]
+  "genre": "Animation"
 },
 { 
   "id": 9, 
@@ -132,9 +116,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1Baf1Mu9J8bl5zs2Cyj3jDS1vtEjjzb-a=s220?authuser=0",
   "year": 2015,
   "rating": 75, 
-  "genre": [
-    "Romance"
-  ]
+  "genre": "Romance"
 },
 { 
   "id": 10, 
@@ -146,9 +128,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/19ogjuimlagWUPWe584hf0FXkTnOYG59M=s220?authuser=0",
   "year": 1946,
   "rating": 95, 
-  "genre": [
-    "Drama"
-  ]
+  "genre": "Drama"
 },
 { 
   "id": 11, 
@@ -160,9 +140,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1XNumjiOcPUxUBkxDAU3BXvzB9uT62VBn=s220?authuser=0",
   "year": 1988,
   "rating": 94, 
-  "genre": [
-    "Action"
-  ]
+  "genre": "Action"
 },
 { 
   "id": 12, 
@@ -174,9 +152,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/15IgqX4CXmfR2DPNYsvMARsR0j8gHiuZw=s220?authuser=0",
   "year": 2022,
   "rating": 81, 
-  "genre": [
-    "Comedy"
-  ]
+  "genre": "Comedy"
 },
 { 
   "id": 13, 
@@ -188,9 +164,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/15HF47ttnrF_QEgut084za2H0GAaYo7dG=s220?authuser=0",
   "year": 1960,
   "rating": 94, 
-  "genre": [
-    "Romance"
-  ]
+  "genre": "Romance"
 },
 { 
   "id": 14, 
@@ -202,9 +176,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/13wiJhTMtvJT3cvLtqZJDu0-TCdzdRYzK=s220?authuser=0",
   "year": 1994,
   "rating": 84, 
-  "genre": [
-    "Drama"
-  ]
+  "genre": "Drama"
 },
 { 
   "id": 15, 
@@ -216,9 +188,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1URuylV4nNP6sAb1sUr8MJRlrwrjImGkn=s220?authuser=0",
   "year": 2011,
   "rating": 77, 
-  "genre": [
-    "Animation"
-  ]
+  "genre": "Animation"
 },
 { 
   "id": 16, 
@@ -230,9 +200,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1W21y_Gm3hjlsD2VCB2jz-0uQkB3e7LwC=s220?authuser=0",
   "year": 2003,
   "rating": 91, 
-  "genre": [
-    "Animation"
-  ]
+  "genre": "Animation"
 },
 { 
   "id": 17, 
@@ -244,9 +212,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1iaobaD-4xB-oGKrm70ZonM4TO91DW_Le=s220?authuser=0",
   "year": 2020,
   "rating": 69, 
-  "genre": [
-    "Family"
-  ]
+  "genre": "Family"
 },
 { 
   "id": 18, 
@@ -258,9 +224,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1iD7sWvxCh27YhjqZuB25Wy3qM3r5arGo=s220?authuser=0",
   "year": 1990,
   "rating": 91, 
-  "genre": [
-    "Fantasy"
-  ]
+  "genre": "Fantasy"
 },
 { 
   "id": 19, 
@@ -272,9 +236,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1aYPX6uux3-39bwUdpQr5HgRKt9C6pstE=s220?authuser=0",
   "year": 2010,
   "rating": 70, 
-  "genre": [
-    "Horror"
-  ]
+  "genre": "Horror"
 },
 { 
   "id": 20, 
@@ -286,9 +248,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1go7-2L3zM6nH-iy6wz33FHRr-hJBfWU4=s220?authuser=0",
   "year": 1983,
   "rating": 89, 
-  "genre": [
-    "Comedy"
-  ]
+  "genre": "Comedy"
 },
 { 
   "id": 21, 
@@ -300,9 +260,7 @@ const movies = [
   "image": "https://lh3.googleusercontent.com/d/1kRd__Y7C5DSbodEpQIAw3lzklez7mf5B=s220?authuser=0",
   "year": 2016,
   "rating": 64, 
-  "genre": [
-    "Horror"
-  ]
+  "genre": "Horror"
 }
 ];
 
