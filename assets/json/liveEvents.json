@@ -1,0 +1,31 @@
+{
+  "liveEvents": [
+    {
+      "id": 1,
+      "type": "Live Event",
+      "title": "The Phantom of the Opera",
+      "description": "Stormusikal baserat på romanen Fantomen på Operan av Gaston Leroux från 1910.",
+      "image": "https://live.staticflickr.com/5478/10384690844_1a9f9f31d9_b.jpg",
+      "genre": "Musikal",
+      "runtime": 160
+    },
+    {
+      "id": 2,
+      "type": "Live Event",
+      "title": "Fidelio",
+      "description": "Fidelio, Beethovens enda opera och hans storslagna hyllning till kärleken.",
+      "image": "https://i.scdn.co/image/ab67616d0000b27319beef9b3ddc9308cf1901c0",
+      "genre": "Opera",
+      "runtime": 184
+    },
+    {
+      "id": 3,
+      "type": "Live Event",
+      "title": "Swan Lake",
+      "description": "The Royal Ballets version av den klassiska kärlekshistorien om spelet mellan gott och ont.",
+      "image": "https://live.staticflickr.com/65535/49547487648_eac2d5bd82_b.jpg",
+      "genre": "Balett",
+      "runtime": 110
+    }
+  ]
+}
