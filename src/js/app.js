@@ -1,5 +1,6 @@
 import express from 'express';
 import ejs from 'ejs';
+import { getTopMovies } from './topMovies.js';
 // converts markdown text in to html
 import * as marked from 'marked';
 
@@ -138,6 +139,18 @@ function initApp(api) {
     } catch (error) {
       console.error('Error getting average rating:', error);
       res.status(500).json({ error: 'Internal Server Error', message: error.message });
+    }
+  });
+
+  // Patrik
+  // API-endpoint for most popular movies
+  app.get('/api/top-movies', async (req, res) => {
+    try {
+      const topMovies = await getTopMovies();
+      res.json(topMovies);
+    } catch (error) {
+      console.error('Error getting top rated movies:', error);
+      res.status(500).json({ error: 'Could not get top rated movies' });
     }
   });
 
