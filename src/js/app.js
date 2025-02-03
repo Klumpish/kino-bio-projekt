@@ -2,6 +2,9 @@ import express from 'express';
 import ejs from 'ejs';
 // converts markdown text in to html
 import * as marked from 'marked';
+import cmsAdapter from './cmsAdapter.js';
+import getMovieReviews from '../routes/getMovieReview.js';
+import getAverageRating from '../routes/getAverageRating.js';
 
 // vite
 async function setupVite(app, vite) {
@@ -64,6 +67,32 @@ function initApp(api) {
     } catch (err) {
       console.error('Error loading movie', err);
       response.status(500).send('Error loading movie');
+    }
+  });
+
+  app.get('/movie/:movieId/reviews', async (req, res) => {
+    try {
+      const movieId = req.params.movieId;
+      const page = parseInt(req.query.page) || 1;
+      const pageSize = parseInt(req.query.pageSize) || 5;
+
+      const { reviews, meta } = await getMovieReviews(cmsAdapter, movieId, page, pageSize);
+
+      res.json({ reviews, meta });
+    } catch (error) {
+      console.error('Failed to fetch reviews:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+  app.get('/movie/:movieId/averageRating', async (req, res) => {
+    try {
+      const movieId = req.params.movieId;
+      const averageRating = await getAverageRating(cmsAdapter, movieId);
+      res.json({ averageRating });
+    } catch (error) {
+      console.error('Error getting average rating:', error);
+      res.status(500).json({ error: 'Internal Server Error', message: error.message });
     }
   });
 

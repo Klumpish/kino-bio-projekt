@@ -8,8 +8,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
-    "start": "nodemon server.js",
-    "test": "jest"
+    "start": "concurrently \"npm run dev:vite\" \"npm run dev:node\"",
+    "dev:vite": "vite",
+    "dev:node": "nodemon server.js",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "jest": {
     "transform": {
@@ -46,8 +48,11 @@
     "vite-plugin-sass": "^0.1.0"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
-    "marked": "^15.0.6"
+    "marked": "^15.0.6",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.9"
   }
 }

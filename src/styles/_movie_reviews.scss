@@ -1,0 +1,18 @@
+.reviews__container {
+  background-color: white;
+  padding: 0.5rem 0.5rem;
+  width: 30rem;
+
+  div {
+    border-bottom: 0.1rem solid rgb(235, 235, 235);
+    padding: 0.3rem 0;
+
+    p {
+      margin: 0.5rem 0;
+    }
+  }
+
+  div:last-child {
+    border-bottom: none;
+  }
+}

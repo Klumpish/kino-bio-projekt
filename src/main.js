@@ -7,6 +7,25 @@ import ApiBackend from './js/ApiBackend.js';
 import MobileMenu from './js/MobileMenu.js';
 import initLiveEvents from './js/_initLiveEvents.js';
 import checkMovieScreenInfo from './js/_initScreenings';
+import LoadMovieReviews from './js/Reviews/LoadMovieReviews.js';
+import PaginatedMovieReviews from './js/Reviews/PaginatedMovieReviews.js';
+import LoadAverageRating from './js/Reviews/LoadAverageRating.js';
+import AverageRating from './js/Reviews/AverageRating.js';
+
+if (document.querySelector('.reviews__container')) {
+  const apiBase = 'http://localhost:5080';
+  const movieId = window.location.pathname.split('/').pop();
+  const reviewBackend = new LoadMovieReviews(apiBase, movieId);
+  const avRatingBackend = new LoadAverageRating(apiBase, movieId);
+
+  const movieReviews = new PaginatedMovieReviews(reviewBackend);
+  movieReviews.initReviews(document.querySelector('.reviews__container'));
+
+  const movieAvRating = new AverageRating(avRatingBackend);
+  movieAvRating.renderAvRating(document.querySelector('.averageRating__container'));
+} else {
+  console.log('No reviews container found.');
+}
 
 // if (document.querySelector('.moviesSecond')) {
 //   const loadingMessage = document.createElement('h4');

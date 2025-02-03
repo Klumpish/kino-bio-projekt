@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { loadMovie, loadMovies } from '../lib/movies';
-import initApp from '../src/js/app';
+import { initApp } from '../src/js/app';
 import { test, expect } from '@jest/globals';
 
 describe('404 Error handling', () => {
