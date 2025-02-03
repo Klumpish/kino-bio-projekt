@@ -1,9 +1,14 @@
 import getAverageRating from './getAverageRating.js';
+import { it, describe, expect, jest, beforeEach } from '@jest/globals';
 
 describe('getAverageRating()', () => {
+  beforeEach(() => {
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
   it('returns IMDB average rating when less than 5 or no valid reviews are found', async () => {
     const cmsAdapter = {
-      fetchAverageRating: async () => ({ data: [] }),
+      fetchAverageRating: async () => [],
       fetchIMDBRating: async () => 6.9,
       fetchIMDBID: async () => 'tt7631058',
     };
@@ -16,15 +21,13 @@ describe('getAverageRating()', () => {
 
   it('returns the average rating if there are 5 or more valid reviews', async () => {
     const cmsAdapter = {
-      fetchAverageRating: async () => ({
-        data: [
-          { attributes: { rating: 4 } },
-          { attributes: { rating: 5 } },
-          { attributes: { rating: 3 } },
-          { attributes: { rating: 4 } },
-          { attributes: { rating: 5 } },
-        ],
-      }),
+      fetchAverageRating: async () => [
+        { attributes: { rating: 4 } },
+        { attributes: { rating: 5 } },
+        { attributes: { rating: 3 } },
+        { attributes: { rating: 4 } },
+        { attributes: { rating: 5 } },
+      ],
       fetchIMDBRating: async () => 6.9,
       fetchIMDBID: async () => 'tt7631058',
     };

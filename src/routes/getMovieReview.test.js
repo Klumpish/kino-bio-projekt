@@ -1,4 +1,5 @@
 import getMovieReviews from './getMovieReview.js';
+import { it, describe, expect, jest, beforeEach } from '@jest/globals';
 
 describe('getMovieReviews()', () => {
   it('returns reviews with pagination metadata for a valid movieId', async () => {
