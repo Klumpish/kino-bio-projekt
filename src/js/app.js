@@ -2,18 +2,17 @@ import express from 'express';
 import ejs from 'ejs';
 // converts markdown text in to html
 import * as marked from 'marked';
-
 import apiRouter from './API.js';
-
 import cors from 'cors';
 import getReviewById from './controllers/getReviewById.js';
 import createReview from './controllers/createReview.js';
 // change everything to this
 import { cmsAdapter } from './adaptors/cmsAdapter.js';
-
 // import cmsAdapter from './cmsAdapter.js';
 import getMovieReviews from '../routes/getMovieReview.js';
 import getAverageRating from '../routes/getAverageRating.js';
+import createTopMoviesRoute from '../routes/topMoviesRoute.js';
+
 
 import createTopMoviesRoute from '../routes/topMoviesRoute.js';
 import { getTopMovies } from '../../lib/topMovies.js';
