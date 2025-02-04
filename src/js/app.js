@@ -16,6 +16,7 @@ import getMovieReviews from '../routes/getMovieReview.js';
 import getAverageRating from '../routes/getAverageRating.js';
 
 import createTopMoviesRoute from '../routes/topMoviesRoute.js';
+import { getTopMovies } from '../../lib/topMovies.js';
 
 
 // vite
