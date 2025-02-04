@@ -13,11 +13,6 @@ import getMovieReviews from '../routes/getMovieReview.js';
 import getAverageRating from '../routes/getAverageRating.js';
 import createTopMoviesRoute from '../routes/topMoviesRoute.js';
 
-
-import createTopMoviesRoute from '../routes/topMoviesRoute.js';
-import { getTopMovies } from '../../lib/topMovies.js';
-
-
 // vite
 async function setupVite(app, vite) {
   // Set views directory
