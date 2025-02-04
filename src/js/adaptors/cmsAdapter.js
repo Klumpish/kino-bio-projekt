@@ -7,7 +7,9 @@ export const cmsAdapter = {
     const payload = await resp.json();
     return payload.data;
   },
-  postReview: async () => {
+  postReview: async (data) => {
+    if (!data) throw new Error('Review data is required');
+
     const res = await fetch(API_MOVIES + '/reviews', {
       method: 'POST',
       headers: {
@@ -15,7 +17,7 @@ export const cmsAdapter = {
       },
       body: JSON.stringify(data),
     });
-    return res.json();
+    return await res.json();
   },
   loadReviewById: async (id) => {
     const url = API_MOVIES + '/reviews?filters[movie]=' + id;
@@ -23,6 +25,7 @@ export const cmsAdapter = {
     const payload = await resp.json();
     return payload.data;
   },
+
   fetchMovieReviews: async (movieId, page = 1, pageSize = 5) => {
     const url = `${API_MOVIES}/reviews?filters[movie]=${movieId}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
     const resp = await fetch(url);

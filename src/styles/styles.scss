@@ -11,10 +11,12 @@
 @use '_buttons_membership_events';
 @use '_tagline';
 @use '_all_movie';
+@use '_reviewContainer';
 @use '_movie';
 @use '_error404';
 @use '_movie_reviews';
 @use '_avRating.scss';
+
 * {
   margin: 0;
   padding: 0;

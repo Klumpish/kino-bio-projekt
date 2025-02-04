@@ -1,32 +1,106 @@
+@use 'variables' as *;
+
 .movie__single__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 18.75rem;
+  grid-template-rows: auto 1fr;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .movie__single {
   display: flex;
+  gap: 1.25rem;
+  grid-column: 1;
+  grid-row: 1 / span 2;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  text-align: center;
-  gap: 2rem;
-  margin: 5rem 0;
-  margin-bottom: 5rem;
 }
 
 .movie__single__header {
+  text-align: center;
+  grid-column: 1 / 2;
+  grid-row: 1;
   color: #fff;
   font-size: xx-large;
 }
 .movie__single__intro {
-  font-size: 1.4rem;
+  width: 50%;
+  text-align: center;
   color: #dcdcdc;
-  max-width: 60%;
+  font-size: 1.7rem;
+
+  color: #dcdcdc;
 }
 .movie__single__img {
-  width: 30%;
+  width: 60%;
+  max-width: 37.5rem;
   height: auto;
+  margin-top: 5rem;
+  border-radius: 0.625rem;
+  margin-bottom: 1.25rem;
+}
+.screening__info-container {
+  grid-column: 2 / 2;
+  grid-row: 2;
+  padding: 1.25rem;
+  width: 100%;
+  max-width: 50rem;
+}
+.screening__info-container-header {
+  color: #dcdcdc;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.screening__info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.screening__info-list li {
+  background-color: #f4f4f4;
+  padding: 0.625rem;
+  margin-bottom: 0.625rem;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+}
+
+.screening-time,
+.screening-room {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.3125rem;
+}
+.screening-room {
+  margin-bottom: 0;
+}
+.primary_button__back {
+  padding: 0.625rem 1.25rem;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.313rem;
+  display: inline-block;
+  margin-top: 1.25rem;
+}
+.primary_button__back:hover {
+  background-color: #0056b3;
+}
+@media (max-width: 768px) {
+  .movie__single__container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .movie__single {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .screening__info-container {
+    grid-column: 1;
+    grid-row: 3;
+  }
 }

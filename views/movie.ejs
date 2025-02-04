@@ -1,20 +1,24 @@
 <body>
 <%- include("./partials/header.ejs") %>
   <div class="movie__single__container">
+    <h1 class="movie__single__header"><%=movie.attributes.title%></h1>
     <article class="movie__single">
-      <h1 class="movie__single__header"><%=movie.attributes.title%></h1>
       <%if (movie.attributes.image) {%>
       <img class="movie__single__img" src="<%=movie.attributes.image.url%>" />
       <%}%>
       <div class="movie__single__intro"><%-movie.attributes.intro%></div>
       <a class="primary_button__back" href="/movies">Back to movies page</a>
     </article>
+    <div class="screening__info-container">
+      <h3 class="screening__info-container-header">Filmen går följande tider</h3>
+        <ul class="screening__info-list"></ul>
+      </div>
+
+    <article>
+    <section class="review"></section>
+  </article>
   </div>
-  <div class="screening__info-container">
-    <div class="screening__info-list">
-      <h1>hej</h1>
-    </div>
-  </div>
+
   <div class="reviews__container">
 <h1>Reviews</h1>
   </div>

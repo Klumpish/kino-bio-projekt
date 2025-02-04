@@ -39,9 +39,6 @@ describe('Movie title from API', () => {
     // get the title from the API response
     const movieTitle = movie.attributes.title;
 
-    // log the title
-    console.log('Title from API:', movieTitle);
-
     // check if statuscode is 200 (ok)
     expect(response.status).toBe(200);
 
@@ -59,7 +56,6 @@ describe('Movie title from API', () => {
     const moviesFromAPI = await loadMovies();
 
     moviesFromAPI.forEach((movie) => {
-      console.log(movie.attributes.title);
       expect(response.text).toContain(movie.attributes.title);
     });
   });

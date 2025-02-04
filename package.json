@@ -11,13 +11,15 @@
     "start": "concurrently \"npm run dev:vite\" \"npm run dev:node\"",
     "dev:vite": "vite",
     "dev:node": "nodemon server.js",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --verbose"
   },
   "jest": {
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    },
-    "testEnvironment": "node"
+    "transform": {},
+    "testEnvironment": "node",
+    "globals": {},
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    }
   },
   "husky": {
     "hooks": {
@@ -48,6 +50,7 @@
     "vite-plugin-sass": "^0.1.0"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
