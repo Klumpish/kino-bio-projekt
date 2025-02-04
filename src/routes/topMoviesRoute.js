@@ -1,8 +1,7 @@
 import express from 'express';
 
-const router = express.Router();
-
 function createTopMoviesRoute(getTopMovies) {
+  const router = express.Router();
   // API-endpoint to fetch most popular movies
   router.get('/top-movies', async (req, res) => {
     try {
