@@ -47,7 +47,7 @@ export default async function screeningDOMinfo() {
 
                 const movieCardImage = document.createElement('img');
                 movieCardImage.classList.add('movie-card__image');
-                movieCardImage.src = "default-image.jpg";
+                movieCardImage.src = "${movie.attributes.image.url}";
                 movieCardImage.alt = `Image for screening at ${screening.attributes.room}`;
 
                 const movieCardTitle = document.createElement('h3');
