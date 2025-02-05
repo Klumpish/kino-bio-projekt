@@ -8,8 +8,11 @@ const loadScreeningsByMovieId = async (id) => {
 export { loadScreeningsByMovieId };
 
 export default async function screeningDOMinfo() {
+
     const moviesID = document.querySelectorAll(".movie-link");
     const IDs = Array.prototype.map.call(moviesID, (movies) => { return movies.id });
+
+    let screeningsCount = 0;
 
     for (const id of IDs) {
         try {
@@ -23,27 +26,56 @@ export default async function screeningDOMinfo() {
                 continue;
             }
 
-            const screeningPlaceElement = movieContainer.querySelector(".movie-card__screeningPlace");
-            const screeningTimeElement = movieContainer.querySelector(".movie-card__screeningTime");
+            const today = new Date();
+            const fiveDaysLater = new Date();
+            fiveDaysLater.setDate(today.getDate() + 5);
 
-            if (screenings.length > 0) {
-                const screening = screenings[0];
-                
+            const upcomingScreenings = screenings.filter(screening => {
                 const screeningTime = new Date(screening.attributes.start_time);
-                const screeningRoom = screening.attributes.room;
-                
-                if (screeningTime && screeningRoom) {
-                    screeningPlaceElement.textContent = `Salong: ${screeningRoom}`;
-                    screeningTimeElement.textContent = `Tid: ${screeningTime.toLocaleString()}`;
-                } else {
-                    console.error(`Invalid screening data for movie ID ${id}:`, screening);
+                return screeningTime >= today && screeningTime <= fiveDaysLater;
+            });
+
+            const limitedScreenings = upcomingScreenings.slice(0, 10);
+
+            limitedScreenings.forEach(screening => {
+                if (screeningsCount >= 10) return;
+
+                const movieCard = document.createElement('article');
+                movieCard.classList.add('movie-card');
+                movieCard.setAttribute('id', `${screening.id}`);
+                movieCard.setAttribute('aria-label', `Movie Screening: ${screening.attributes.start_time}`);
+
+                const movieCardImage = document.createElement('img');
+                movieCardImage.classList.add('movie-card__image');
+                movieCardImage.src = "default-image.jpg";
+                movieCardImage.alt = `Image for screening at ${screening.attributes.room}`;
+
+                const movieCardTitle = document.createElement('h3');
+                movieCardTitle.classList.add('movie-card__title');
+                movieCardTitle.textContent = `Screening of Movie ${id}`;
+
+                const movieCardDate = document.createElement('time');
+                movieCardDate.classList.add('movie-card__date');
+                const screeningTime = new Date(screening.attributes.start_time);
+                movieCardDate.textContent = `Premiere: ${screeningTime.toLocaleString()}`;
+
+                movieCard.appendChild(movieCardImage);
+                movieCard.appendChild(movieCardTitle);
+                movieCard.appendChild(movieCardDate);
+
+                const moviesListItem = document.createElement('li');
+                moviesListItem.classList.add('movies__list-item');
+                moviesListItem.appendChild(movieCard);
+
+                const moviesList = document.querySelector('.movies__list');
+                moviesList.appendChild(moviesListItem);
+
+                screeningsCount++;
+
+                if (screeningsCount >= 10) {
+                    return;
                 }
-            } else {
-                const noShowingElement = document.createElement("p");
-                noShowingElement.textContent = "No showings";
-                noShowingElement.classList.add("no-showings");
-                movieContainer.appendChild(noShowingElement);
-            }
+            });
 
         } catch (error) {
             console.error(`Error fetching screenings for movie ID ${id}:`, error);

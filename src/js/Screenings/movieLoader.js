@@ -21,5 +21,3 @@ export async function loadMoviesAndFilter(cmsAdapter) {
       throw new Error('Error loading and filtered movies:' + err.message);
     }
   }
-
-  export default loadMoviesAndFilter;
