@@ -1,12 +1,12 @@
 import express from 'express';
-import { cmsAdapter, cmsAdapterScreenings } from './cmsAdapter.js';
+import { cmsAdapter, cmsAdapterScreenings } from './adaptors/cmsAdapter.js';
 import screenings from '../../lib/screenings.js';
 
 const router = express.Router();
 
 // screenings API
 router.get('/api/screenings', async (req, res) => {
-  const screenings = cmsAdapterScreenings.loadAllScreenings();
+  const screenings = await cmsAdapterScreenings.loadAllScreenings();
   res.json({ screenings });
 });
 

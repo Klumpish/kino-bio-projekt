@@ -9,6 +9,9 @@ import initLiveEvents from './js/_initLiveEvents.js';
 import buildScreeningInfo from './js/_initScreenings';
 
 import checkMovieScreenInfo from './js/_initScreenings';
+import screeningDOMinfo from './js/Screenings/screeningDOMInfo.js';
+
+// import { fetchAndDisplayScreenings } from './lib/fetchScreenings.js';
 
 import ReviewService from './services/review/ReviewService.js';
 
@@ -52,3 +55,51 @@ try {
 if (window.location.pathname === '/') {
   document.addEventListener('DOMContentLoaded', initLiveEvents);
 }
+
+if (window.location.pathname === '/') {
+  document.addEventListener('DOMContentLoaded', () => {
+    if (document.querySelector('.movie-card')) {
+      screeningDOMinfo();
+    } else {
+      const test = document.querySelector('.movies__header');
+      const noShowingElement = document.createElement('p');
+      noShowingElement.textContent = 'Inga visningar för tillfället...';
+      noShowingElement.classList.add('no-showings');
+      test.insertAdjacentElement('afterend', noShowingElement);
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const moviesList = document.querySelector('.movies__list');
+  moviesList.innerHTML = '<li>Laddar populära filmer...</li>';
+
+  try {
+    const response = await fetch('/api/top-movies');
+    const movies = await response.json();
+
+    moviesList.innerHTML = '';
+
+    if (!movies.length) {
+      moviesList.innerHTML = '<li>Inga topprankade filmer hittades.</li>';
+      return;
+    }
+
+    movies.forEach((movie) => {
+      const movieItem = document.createElement('li');
+      movieItem.innerHTML = `
+              <a href="/movie/${movie.id}" id="${movie.id}">
+                  <article class="movie-card">
+                      <img class="movie-card__image" src="${movie.attributes.image.url}" alt="Movie title: ${movie.attributes.title}">
+                      <h3 class="movie-card_title">${movie.attributes.title}</h3>
+                      <span class="movie-card_rating">⭐ Rating: ${movie.attributes.avgRating}/5</span>
+                  </article>
+              </a>
+          `;
+      moviesList.appendChild(movieItem);
+    });
+  } catch (error) {
+    console.error('Fel vid hämtning av topprankade filmer:', error);
+    moviesList.innerHTML = '<li>Kunde inte ladda populära filmer.</li>';
+  }
+});

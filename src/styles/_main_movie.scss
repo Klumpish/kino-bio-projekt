@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-decoration: none;
 
   .movies__header {
     color: $gray;
@@ -15,7 +16,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 1rem auto;
-    padding: 0 1rem;
+    padding: 0;
     overflow-x: auto;
     list-style: none;
     justify-content: center;
@@ -32,9 +33,10 @@
     min-width: 15rem;
     max-width: 17rem;
     flex-shrink: 1;
+    color: black;
 
     .movie-card {
-      background-color: white;
+      background-color: #cdcdcd;
       min-width: 15rem;
       margin: 0.2rem;
       border-radius: 0.2rem;
@@ -43,6 +45,9 @@
       grid-template-columns: 1fr 1fr;
       border: 3px solid $gray;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.7rem;
 
       img {
         object-fit: cover;
@@ -124,4 +129,15 @@
       }
     }
   }
+}
+
+.movie-card__screeningPlace,
+.movie-card__screeningTime {
+  font-size: 0.5rem;
+}
+
+.no-showings {
+  color: #cdcdcd;
+  padding: 2rem;
+  font-size: 1.5rem;
 }

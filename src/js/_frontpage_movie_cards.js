@@ -3,7 +3,7 @@ export default class MovieCardGenerator {
     this.apiBackend = apiBackend;
   }
 
-  async CardGenerator(count = 1) {
+  async CardGenerator(count = 10) {
     const moviesList = document.querySelector('.movies__list');
     const movies = await this.apiBackend.loadAllFilms();
     const moviesToDisplay = movies.sort((a, b) => b.rating - a.rating).slice(0, count);

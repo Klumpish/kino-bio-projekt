@@ -1,18 +1,18 @@
 <%- include("./partials/header.ejs") %>
 <section class="movies">
-  <h2 class="movies__header">FILMER PÅ KINO</h2>
-  <ul class="movies__list">
-    <% movies.forEach((movie)=>{ %>
-      <li>
-      <a href="/movie/<%=movie.id%>" id="<%= movie.id %>">
+<h2 class="movies__header">VISNINGAR DE KOMMANDE FEM DAGARNA</h2>
+<ul class="movies__list">
+  <% movies.forEach((movie) => { %>
+    <li>
+      <a href="/movie/<%= movie.id %>" id="<%= movie.id %>" class ="movie-link">
         <article class="movie-card">
-          <img class="movie-card__image" src="<%=movie.attributes.image.url%>" alt="Movie title: <%=movie.attributes.title%>">
-          <h3 class="movie-card_title"><%=movie.attributes.title%></h3>
+          <img class="movie-card__image" src="<%= movie.attributes.image.url %>" alt="Movie title: <%= movie.attributes.title %>">
+          <h3 class="movie-card__title"><%= movie.attributes.title %></h3>
         </article>
       </a>
     </li>
-    <% }); %>
-  </ul>
+  <% }); %>
+</ul>
   <div class="movies__actions">
     <a href="#" class="movies__actions-bookTicket" aria-label="Book moive tickets now">BOKA BILJETT</a>
     <a href="movies.html" class="movies__actions-seeAll" aria-label="See all movies">SE ALLA FILMER</a>
