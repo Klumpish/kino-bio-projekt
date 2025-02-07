@@ -2,7 +2,7 @@
 
 .movie__single__container {
   display: grid;
-  grid-template-columns: 1fr 18.75rem;
+  grid-template-columns: 1fr 28.715rem;
   grid-template-rows: auto 1fr;
   gap: 1.25rem;
   padding: 1.25rem;
@@ -11,6 +11,7 @@
 }
 
 .movie__single {
+  position: relative;
   display: flex;
   gap: 1.25rem;
   grid-column: 1;
@@ -44,7 +45,7 @@
 }
 .screening__info-container {
   grid-column: 2 / 2;
-  grid-row: 2;
+  grid-row: 1;
   padding: 1.25rem;
   width: 100%;
   max-width: 50rem;
@@ -90,8 +91,8 @@
 }
 @media (max-width: 768px) {
   .movie__single__container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .movie__single {

@@ -139,7 +139,7 @@ function initApp(api) {
     }
   });
 
-  app.get('/movie/:movieId/averageRating', async (req, res) => {
+  app.get('/movie/:movieId/ratings/average', async (req, res) => {
     try {
       const movieId = req.params.movieId;
       const averageRating = await getAverageRating(cmsAdapter, movieId);

@@ -20,6 +20,8 @@ import PaginatedMovieReviews from './js/Reviews/PaginatedMovieReviews.js';
 import LoadAverageRating from './js/Reviews/LoadAverageRating.js';
 import AverageRating from './js/Reviews/AverageRating.js';
 import { IdUtils } from './services/utils/IdUtils.js';
+import TopMoviesFetcher from './js/_topMoviesFetcher.js';
+import TopMoviesRenderer from './js/_topMoviesRenderer.js';
 
 if (document.querySelector('.reviews__container')) {
   const apiBase = 'http://localhost:5080';
@@ -33,7 +35,7 @@ if (document.querySelector('.reviews__container')) {
   const movieAvRating = new AverageRating(avRatingBackend);
   movieAvRating.renderAvRating(document.querySelector('.averageRating__container'));
 } else {
-  console.log('No reviews container found.');
+  console.log('Not on a movie page, skipping reviews.');
 }
 
 const review = document.querySelector('.review');
@@ -53,7 +55,22 @@ try {
 }
 
 if (window.location.pathname === '/') {
-  document.addEventListener('DOMContentLoaded', initLiveEvents);
+  document.addEventListener('DOMContentLoaded', async () => {
+    initLiveEvents();
+
+    // Fetch and render top movies
+    const fetcher = new TopMoviesFetcher('/api/top-movies');
+    const renderer = new TopMoviesRenderer('.topmovies__list');
+
+    renderer.renderLoadingMessage();
+    const movies = await fetcher.fetchTopMovies();
+    if (movies.length) {
+      renderer.renderMovies(movies);
+    } else {
+      renderer.renderErrorMessage();
+      console.log('No movies received, showing error message');
+    }
+  });
 }
 
 if (window.location.pathname === '/') {
@@ -69,37 +86,3 @@ if (window.location.pathname === '/') {
     }
   });
 }
-
-document.addEventListener('DOMContentLoaded', async () => {
-  const moviesList = document.querySelector('.movies__list');
-  moviesList.innerHTML = '<li>Laddar populära filmer...</li>';
-
-  try {
-    const response = await fetch('/api/top-movies');
-    const movies = await response.json();
-
-    moviesList.innerHTML = '';
-
-    if (!movies.length) {
-      moviesList.innerHTML = '<li>Inga topprankade filmer hittades.</li>';
-      return;
-    }
-
-    movies.forEach((movie) => {
-      const movieItem = document.createElement('li');
-      movieItem.innerHTML = `
-              <a href="/movie/${movie.id}" id="${movie.id}">
-                  <article class="movie-card">
-                      <img class="movie-card__image" src="${movie.attributes.image.url}" alt="Movie title: ${movie.attributes.title}">
-                      <h3 class="movie-card_title">${movie.attributes.title}</h3>
-                      <span class="movie-card_rating">⭐ Rating: ${movie.attributes.avgRating}/5</span>
-                  </article>
-              </a>
-          `;
-      moviesList.appendChild(movieItem);
-    });
-  } catch (error) {
-    console.error('Fel vid hämtning av topprankade filmer:', error);
-    moviesList.innerHTML = '<li>Kunde inte ladda populära filmer.</li>';
-  }
-});

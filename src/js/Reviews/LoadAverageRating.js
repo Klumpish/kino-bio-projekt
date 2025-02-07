@@ -6,7 +6,7 @@ export default class LoadAverageRating {
 
   async fetchAverageRating() {
     try {
-      const response = await fetch(`${this.url}/movie/${this.movieId}/averageRating`);
+      const response = await fetch(`${this.url}/movie/${this.movieId}/ratings/average`);
 
       if (!response.ok) throw new Error('Failed to fetch average rating');
 

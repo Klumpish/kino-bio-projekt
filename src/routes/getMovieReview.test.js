@@ -49,4 +49,27 @@ describe('getMovieReviews()', () => {
       totalPages: 5,
     });
   });
+
+  it('calculates the correct total pages based on total reviews and pageSize', async () => {
+    const cmsAdapter = {
+      fetchMovieReviews: async () => ({
+        data: [
+          { id: 1, attributes: { rating: 5, comment: 'Good', author: 'Alice' } },
+          { id: 2, attributes: { rating: 4, comment: 'Nice', author: 'Bob' } },
+        ],
+        meta: { pagination: { total: 7 } },
+      }),
+    };
+
+    const movieId = 123;
+    const page = 1;
+    const pageSize = 2;
+
+    const result = await getMovieReviews(cmsAdapter, movieId, page, pageSize);
+
+    expect(result.meta).toEqual({
+      currentPage: 1,
+      totalPages: 4,
+    });
+  });
 });
