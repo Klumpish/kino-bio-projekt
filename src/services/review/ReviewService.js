@@ -77,19 +77,20 @@ export default class ReviewService {
     });
   }
 
-  validateReview() {
+  async validateReview() {
     const comment = this.textarea.value.trim();
     const movieId = IdUtils.getMovieIdFromPath();
-    const author = UserService.getUserName();
+    const author = await UserService.showAuthDialog();
+    console.log('author:', author);
 
-    ReviewValidator.validate(comment, this.selectedRating);
+    ReviewValidator.validate(comment, this.selectedRating, author);
 
     return ReviewFormatter.format(comment, this.selectedRating, movieId, author);
   }
 
   async handleSubmit() {
     try {
-      const reviewData = this.validateReview();
+      const reviewData = await this.validateReview();
       console.log(`Film id: ${reviewData.data.movie}`);
       console.log(`Film data: ${reviewData}`);
       await ReviewSubmitter.submit(reviewData.data.movie, reviewData);

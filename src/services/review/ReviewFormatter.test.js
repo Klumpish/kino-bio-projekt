@@ -5,7 +5,10 @@ describe('ReviewFormatter', () => {
     const comment = 'Great movie!';
     const rating = 5;
     const movieId = '123';
-    const author = 'JohnDoe';
+    const author = {
+      username: 'JohnDoe',
+      status: true,
+    };
 
     const formattedData = ReviewFormatter.format(comment, rating, movieId, author);
 
@@ -13,20 +16,12 @@ describe('ReviewFormatter', () => {
       data: {
         comment,
         rating,
-        author,
-        verified: true,
+        author: author.username,
+        verified: author.status,
         movie: movieId,
         createdAt: expect.any(String),
         updatedAt: expect.any(String),
       },
     });
-  });
-
-  test('should return true if author is not Guest', () => {
-    expect(ReviewFormatter.isLoggedIn('JohnDoe')).toBe(true);
-  });
-
-  test('should return false if author is Guest', () => {
-    expect(ReviewFormatter.isLoggedIn('Guest')).toBe(false);
   });
 });

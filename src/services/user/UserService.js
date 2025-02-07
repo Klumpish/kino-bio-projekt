@@ -1,26 +1,27 @@
-export default class UserService {
-  constructor() {
-    this.user = null;
-  }
+import AuthDialog from './AuthDialog.js';
+import ApiBackend from '../ApiBackend.js';
 
-  async login(username, password) {
-    const response = await fetch('/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
+export default class UserService {
+  constructor() {}
+
+  static async showAuthDialog() {
+    const api = new ApiBackend('');
+    const authDialog = new AuthDialog(api);
+    const dialog = authDialog.render();
+    document.body.appendChild(dialog);
+    dialog.showModal();
+
+    await new Promise((resolve) => {
+      authDialog.addEventListener('auth', resolve, { once: true });
     });
 
-    if (!response.ok) {
-      throw new Error('Failed to login');
-    }
-
-    this.user = await response.json();
-    return this.user;
-  }
-
-  static getUserName() {
-    return this.user ? this.user.username : 'Guest';
+    dialog.close();
+    dialog.remove();
+    return {
+      username: authDialog.result,
+      status: authDialog.status,
+      isLoggedIn: authDialog.isLoggedIn,
+      authBtnClick: authDialog.authBtnClick,
+    };
   }
 }

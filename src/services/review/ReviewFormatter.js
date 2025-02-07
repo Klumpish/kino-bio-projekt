@@ -4,15 +4,12 @@ export class ReviewFormatter {
       data: {
         comment,
         rating,
-        author,
-        verified: this.isLoggedIn(author),
+        author: author.username,
+        verified: author.status,
         movie: movieId,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       },
     };
-  }
-  static isLoggedIn(author) {
-    return author !== 'Guest';
   }
 }

@@ -68,6 +68,8 @@
   ]
   ```
 
+## Reviews API
+
 ### Hämta recensioner för en film
 
 - **URL**: `/movie/:movieId/reviews`
@@ -114,10 +116,149 @@
 }
 ```
 
+### Hämta recensioner för en film
+
+- **URL**: `/movie/reviews`
+- **Method**: `POST`
+- **Headers**:
+  - Content-Type: application/json
+- **Description**: Submit movie review for authenticated users
+- **Example Response**:
+
+```
+{
+  "data": {
+    "id": "456",
+    "attributes": {
+      "comment": "Great movie!",
+      "rating": 5,
+      "author": "user",
+      "movie": "123",
+      "createdAt": "2024-03-19T12:00:00.000Z"
+    }
+  }
+}
+```
+
+- **Request Body**:
+
+```
+{
+  "data": {
+    "comment": "Great movie!",
+    "rating": 5,
+    "movie": "123",
+    "author": "user"
+  }
+}
+```
+
+## Authentication API
+
+### Login
+
+- **URL**: `/login`
+- **Method**: `POST`
+- **Headers**:
+  - `Authorization`: Basic base64(username:password)
+- **Description**: Authenticates user with username and password
+- **Response**: JWT token and user data
+- **Example Response**:
+
+```
+{
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": {
+    "username": "user",
+    "verified": true,
+    "isLoggedIn": true
+  }
+}
+```
+
+### Get User Data
+
+- **URL**: `/user`
+- **Method**: `GET`
+- **Headers**:
+  - `Authorization`: Authorization: Bearer {token}
+- **Description**: Retrieves authenticated user data
+- **Response**: Username, Verified, IsLoggedIn
+- **Example Response**:
+
+```
+{
+  "user": {
+    "username": "user",
+    "isVerified": true,
+    "isLoggedIn": true
+  }
+}
+```
+
 ### Notes
 
 - The `/api/screenings/:id/movie` endpoint returns only screenings that have not yet started.
 - If no upcoming screenings are found for a movie, an empty array is returned.
+
+## Top Movies API
+
+### Get top movies
+
+- **URL:** `/api/top-movies`
+- **Method:** **`GET`**
+- **Description:** Retrieves a list of the top-rated movies based on reviews from the last 30 days.
+- **Response:** JSON object containing the top movies.
+
+#### **Example Response:**
+
+```
+  {
+    "id": 3,
+    "attributes": {
+      "title": "The Shawshank Redemption",
+      "imdbId": "tt0111161",
+      "intro": "Over the course of several years, **two convicts form a friendship**, seeking consolation and, eventually, redemption through basic compassion.",
+      "image": {
+        "url": "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
+      },
+      "createdAt": "2023-01-23T07:17:34.923Z",
+      "updatedAt": "2023-01-27T07:12:24.582Z",
+      "publishedAt": "2023-01-23T07:17:39.384Z",
+      "avgRating": 4.7
+    }
+  },
+  {
+    "id": 1,
+    "attributes": {
+      "title": "Isle of dogs",
+      "imdbId": "tt5104604",
+      "intro": "An outbreak of dog flu has spread through the city of **Megasaki, Japan**, and Mayor Kobayashi has demanded all dogs to be sent to Trash Island.",
+      "image": {
+        "url": "https://m.media-amazon.com/images/M/MV5BZDQwOWQ2NmUtZThjZi00MGM0LTkzNDctMzcyMjcyOGI1OGRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
+      },
+      "createdAt": "2023-01-23T05:58:58.110Z",
+      "updatedAt": "2023-01-27T07:11:53.523Z",
+      "publishedAt": "2023-01-23T06:01:31.679Z",
+      "avgRating": 3.5
+    }
+  },  // Continues with 3 more movie objects...
+```
+
+### Error Handling
+
+- `200 OK` – **Request was successful.**
+- `500 Internal Server Error` – **Something went wrong on the server.**
+
+#### **Example Error Response:**
+
+```
+{
+  "error": "Could not get top rated movies"
+}
+```
+
+---
 
 ## 🚀 Vite Installation
 

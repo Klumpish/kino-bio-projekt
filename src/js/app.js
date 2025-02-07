@@ -6,13 +6,13 @@ import getDisplayedScreenings from './Screenings/fetchAndDisplayScreenings.js';
 import { loadMoviesAndFilter } from './Screenings/movieLoader.js';
 import apiRouter from './API.js';
 import cors from 'cors';
-import getReviewById from './controllers/getReviewById.js';
-import createReview from './controllers/createReview.js';
+import createReview from './controllers/review.controller.js';
 // change everything to this
 import { cmsAdapter } from './adaptors/cmsAdapter.js';
 import getMovieReviews from '../routes/getMovieReview.js';
 import getAverageRating from '../routes/getAverageRating.js';
 import createTopMoviesRoute from '../routes/topMoviesRoute.js';
+import userRoutes from '../services/routes/user.route.js';
 
 // vite
 async function setupVite(app, vite) {
@@ -43,6 +43,8 @@ function initApp(api) {
   app.use(cors());
 
   // Routes
+  app.use('/', userRoutes);
+
   app.get('/', async (request, response) => {
     try {
       const movies = await loadMoviesAndFilter(cmsAdapter);
@@ -91,18 +93,6 @@ function initApp(api) {
       response.status(500).send('Error loading movie');
     }
   });
-  /* 
-   kirill, is it need? two gets calling /movie/:movieId/reviews
-   one gives us all the reviews what does this one do? 
-*/
-  // app.get('/movie/:movieId/reviews', async (request, response) => {
-  //   try {
-  //     const reviews = await getReviewById(cmsAdapter, request.params.movieId);
-  //     response.status(200).json(reviews);
-  //   } catch (error) {
-  //     response.status(500).send('Error loading reviews');
-  //   }
-  // });
 
   app.use(apiRouter);
 
@@ -112,15 +102,6 @@ function initApp(api) {
       response.status(201).json(review);
     } catch (error) {
       response.status(500).send('Error creating review');
-    }
-  });
-
-  app.post('/login', async (request, response) => {
-    const { username, password } = request.body;
-    if (username === 'admin' && password === 'password') {
-      response.status(200).json({ username });
-    } else {
-      response.status(401).json({ error: 'Invalid username or password' });
     }
   });
 

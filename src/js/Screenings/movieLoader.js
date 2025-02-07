@@ -10,7 +10,6 @@ export async function loadMoviesAndFilter(cmsAdapter) {
     }
 
     return allMovies;
-
   } catch (err) {
     throw new Error('Error loading and filtering movies: ' + err.message);
   }
