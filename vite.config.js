@@ -4,7 +4,6 @@ import sass from 'vite-plugin-sass';
 export default defineConfig(({ mode }) => {
   const isProduction = mode === 'production';
   return {
-    plugins: [sass()],
     base: mode === 'production' ? '/static/dist/' : '/', // Use correct base URLs
     // base: '/static/dist', // Replace 'my-vite-app' with your repository name
     publicDir: 'src/assets',

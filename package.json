@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
-    "start": "concurrently \"npm run dev:vite\" \"npm run dev:node\"",
+    "start": "node server.js",
     "dev:vite": "vite",
     "dev:node": "nodemon server.js",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --verbose"
