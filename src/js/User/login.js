@@ -60,7 +60,7 @@ export function createLoginForm() {
       if (response.ok) {
         console.log('Login success:', data);
         localStorage.setItem('token', data.token);
-        window.location.href = '/';
+        window.location.href = '/profile';
       } else {
         console.error('Login failed:', data);
         errorDiv.textContent = data.message;

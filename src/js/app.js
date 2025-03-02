@@ -86,6 +86,11 @@ function initApp(api) {
     response.render('registerM.ejs', { movies });
   });
 
+  app.get('/profile', async (request, response) => {
+    const movies = await api.loadMovies();
+    response.render('userProfile.ejs', { movies });
+  });
+
   // single movie page
   app.get('/movie/:movieId', async (request, response) => {
     try {

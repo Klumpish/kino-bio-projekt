@@ -24,6 +24,7 @@ import TopMoviesFetcher from './js/_topMoviesFetcher.js';
 import TopMoviesRenderer from './js/_topMoviesRenderer.js';
 import { createLoginForm } from './js/User/login.js';
 import { createRegisterForm } from './js/User/register.js';
+import { showProfile } from './js/User/profile.js';
 
 if (document.querySelector('.reviews__container')) {
   const apiBase = 'http://localhost:5080';
@@ -95,4 +96,8 @@ if (window.location.pathname === '/loginM') {
 
 if (window.location.pathname === '/registerM') {
   createRegisterForm();
+}
+
+if (window.location.pathname === '/profile') {
+  showProfile();
 }
