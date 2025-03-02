@@ -18905,7 +18905,7 @@ function Rd() {
     });
 }
 if (document.querySelector('.reviews__container')) {
-  const t = 'http://localhost:5080',
+  const t = '',
     e = po.getMovieIdFromPath(),
     i = new ur(t, e),
     s = new mr(t, e);

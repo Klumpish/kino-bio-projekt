@@ -13,6 +13,7 @@ import getMovieReviews from '../routes/getMovieReview.js';
 import getAverageRating from '../routes/getAverageRating.js';
 import createTopMoviesRoute from '../routes/topMoviesRoute.js';
 import userRoutes from '../services/routes/user.route.js';
+import dotenv from 'dotenv';
 
 // vite
 async function setupVite(app, vite) {
@@ -36,6 +37,7 @@ function initApp(api) {
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
+  dotenv.config();
   // sets the view engine to EJS
   app.set('view engine', 'ejs');
   // sets view directory (the folder with EJS files)
