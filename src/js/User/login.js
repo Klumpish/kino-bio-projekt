@@ -27,6 +27,11 @@ export function createLoginForm() {
   button.setAttribute('variant', 'default');
   button.textContent = 'Logga in';
 
+  button.addEventListener('click', () => {
+    const storedData = JSON.parse(localStorage.getItem('userData'));
+    console.log(storedData.username);
+  });
+
   const h2Msg = document.createElement('h2');
   h2Msg.textContent = 'Inte medlem? Registrera dig här!';
   h2Msg.className = 'login__msg';

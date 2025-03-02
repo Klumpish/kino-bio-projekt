@@ -80,6 +80,11 @@ function initApp(api) {
     response.render('loginM.ejs', { movies });
   });
 
+  app.get('/registerM', async (request, response) => {
+    const movies = await api.loadMovies();
+    response.render('registerM.ejs', { movies });
+  });
+
   // single movie page
   app.get('/movie/:movieId', async (request, response) => {
     try {

@@ -23,6 +23,7 @@ import { IdUtils } from './services/utils/IdUtils.js';
 import TopMoviesFetcher from './js/_topMoviesFetcher.js';
 import TopMoviesRenderer from './js/_topMoviesRenderer.js';
 import { createLoginForm } from './js/User/login.js';
+import { createRegisterForm } from './js/User/register.js';
 
 if (document.querySelector('.reviews__container')) {
   const apiBase = 'http://localhost:5080';
@@ -88,4 +89,10 @@ if (window.location.pathname === '/') {
   });
 }
 
-createLoginForm();
+if (window.location.pathname === '/loginM') {
+  createLoginForm();
+}
+
+if (window.location.pathname === '/registerM') {
+  createRegisterForm();
+}
