@@ -1,0 +1,60 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="flex bg-[#2B0404] min-h-screen w-full items-center justify-center p-4">
+    <div class="w-full max-w-7xl bg-[#2B0404] rounded-lg shadow border-[0.1875rem] border-[#DCDCDC] p-6 md:p-8">
+        <h1 class="text-2xl md:text-3xl font-bold text-[#DCDCDC] text-center mb-8">
+            Logga in
+        </h1>
+        <form class="space-y-6" action="#">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="namn" class="block mb-2 text-sm font-medium text-[#DCDCDC]">Namn</label>
+                    <input type="text" name="namn" id="namn" class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Skriv in namn" required>
+                </div>
+                <div>
+                    <label for="efternamn" class="block mb-2 text-sm font-medium text-[#DCDCDC]">Efternamn</label>
+                    <input type="text" name="efternamn" id="efternamn" class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Skriv in efternamn" required>
+                </div>
+            </div>
+            <div>
+                <label for="anvandarnamn" class="block mb-2 text-sm font-medium text-[#DCDCDC]">Användarnamn</label>
+                <input type="text" name="anvandarnamn" id="anvandarnamn" class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Skriv in användarnamn" required>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="email" class="block mb-2 text-sm font-medium text-[#DCDCDC]">E-post</label>
+                    <input type="email" name="email" id="email" class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Skriv in e-post adress" required>
+                </div>
+                <div>
+                    <label for="phone-input" class="block mb-2 text-sm font-medium text-[#DCDCDC]">Telefonnummer</label>
+                    <input type="tel" name="phone" id="phone-input" class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600" placeholder="Skriv in telefonnummer" pattern="^[+]?[0-9]{1,4}?[ ]?([0-9]{1,3}[ ])?[0-9]{1,4}[ ]?[0-9]{1,4}$" required>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="password" class="block mb-2 text-sm font-medium text-[#DCDCDC]">Lösenord</label>
+                    <input type="password" name="password" id="password" placeholder="••••••••" class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600" required>
+                </div>
+                <div>
+                    <label for="confirm-password" class="block mb-2 text-sm font-medium text-[#DCDCDC]">Bekräfta lösenord</label>
+                    <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••" class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600" required>
+                </div>
+            </div>
+            <div class="flex flex-col items-center mt-6 space-y-4">
+                <div class="flex items-start">
+                    <input id="terms" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required>
+                    <label for="terms" class="ml-3 text-sm font-light text-[#DCDCDC]">
+                        Jag har läst och godkänner reglerna för skapandet av detta konto. Uppgifterna jag har lämnat är mina egna och jag har vetskap om hur företaget hanterar mina uppgifter.
+                    </label>
+                </div>
+                <a href="#" class="text-sm font-medium text-[#DCDCDC] underline text-center">Läs mer om hur företaget hanterar mina uppgifter här.</a>
+                <button type="submit" class="w-full sm:w-auto px-5 py-2.5 text-black bg-[#FFC342] hover:bg-[#FFB108] focus:ring-4 focus:outline-none focus:ring-[#a7c7ff] font-bold rounded-lg text-sm text-center">Skapa konto</button>
+                <p class="text-sm font-light text-[#DCDCDC] text-center">
+                    Redan medlem? <a href="#" class="font-medium text-primary-700 hover:underline">Logga in här!</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>
