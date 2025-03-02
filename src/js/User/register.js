@@ -72,13 +72,31 @@ export function createRegisterForm() {
     }
 
     const formData = {
-      telefonnummer: telefonnummer,
-      username: username,
+      email: username,
+      number: telefonnummer,
       password: password,
     };
-    console.log(formData);
 
-    localStorage.setItem('userData', JSON.stringify(formData));
+    try {
+      const response = await fetch('/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Registration success:', result);
+        window.location.href = '/loginM';
+      } else {
+        console.error('Registration failed:', result);
+        errorDiv.textContent = result.message;
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+      errorDiv.textContent = 'An error occurred during registration.';
+    }
   });
 
   form.append(h1, userField, userNumber, passwordField, passwordField2, errorDiv, button);

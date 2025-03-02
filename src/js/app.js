@@ -35,6 +35,7 @@ function initApp(api) {
   const app = express();
 
   app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
   // sets the view engine to EJS
   app.set('view engine', 'ejs');
   // sets view directory (the folder with EJS files)

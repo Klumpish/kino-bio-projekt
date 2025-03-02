@@ -1794,7 +1794,7 @@ function l(t) {
     });
 }
 var _i,
-  z = class extends We {
+  A = class extends We {
     constructor() {
       super(),
         Sr(this, _i, !1),
@@ -1840,11 +1840,11 @@ var _i,
     }
   };
 _i = new WeakMap();
-z.version = '2.20.0';
-z.dependencies = {};
-r([l()], z.prototype, 'dir', 2);
-r([l()], z.prototype, 'lang', 2);
-var bs = class extends z {
+A.version = '2.20.0';
+A.dependencies = {};
+r([l()], A.prototype, 'dir', 2);
+r([l()], A.prototype, 'lang', 2);
+var bs = class extends A {
   render() {
     return y` <slot></slot> `;
   }
@@ -2205,13 +2205,13 @@ const ua = async (t, e, i) => {
     m = {},
     g = 0;
   for (let b = 0; b < c.length; b++) {
-    const { name: $, fn: A } = c[b],
+    const { name: C, fn: S } = c[b],
       {
         x: _,
-        y: C,
+        y: $,
         data: v,
         reset: w,
-      } = await A({
+      } = await S({
         x: f,
         y: u,
         initialPlacement: s,
@@ -2223,8 +2223,8 @@ const ua = async (t, e, i) => {
         elements: { reference: t, floating: e },
       });
     (f = _ ?? f),
-      (u = C ?? u),
-      (m = { ...m, [$]: { ...m[$], ...v } }),
+      (u = $ ?? u),
+      (m = { ...m, [C]: { ...m[C], ...v } }),
       w &&
         g <= 50 &&
         (g++,
@@ -2249,38 +2249,38 @@ async function xs(t, e) {
       padding: m = 0,
     } = Ee(e, t),
     g = zo(m),
-    $ = c[p ? (u === 'floating' ? 'reference' : 'floating') : u],
-    A = zi(
+    C = c[p ? (u === 'floating' ? 'reference' : 'floating') : u],
+    S = zi(
       await a.getClippingRect({
         element:
-          (i = await (a.isElement == null ? void 0 : a.isElement($))) == null || i
-            ? $
-            : $.contextElement || (await (a.getDocumentElement == null ? void 0 : a.getDocumentElement(c.floating))),
+          (i = await (a.isElement == null ? void 0 : a.isElement(C))) == null || i
+            ? C
+            : C.contextElement || (await (a.getDocumentElement == null ? void 0 : a.getDocumentElement(c.floating))),
         boundary: h,
         rootBoundary: f,
         strategy: d,
       })
     ),
     _ = u === 'floating' ? { x: s, y: o, width: n.floating.width, height: n.floating.height } : n.reference,
-    C = await (a.getOffsetParent == null ? void 0 : a.getOffsetParent(c.floating)),
-    v = (await (a.isElement == null ? void 0 : a.isElement(C)))
-      ? (await (a.getScale == null ? void 0 : a.getScale(C))) || { x: 1, y: 1 }
+    $ = await (a.getOffsetParent == null ? void 0 : a.getOffsetParent(c.floating)),
+    v = (await (a.isElement == null ? void 0 : a.isElement($)))
+      ? (await (a.getScale == null ? void 0 : a.getScale($))) || { x: 1, y: 1 }
       : { x: 1, y: 1 },
     w = zi(
       a.convertOffsetParentRelativeRectToViewportRelativeRect
         ? await a.convertOffsetParentRelativeRectToViewportRelativeRect({
             elements: c,
             rect: _,
-            offsetParent: C,
+            offsetParent: $,
             strategy: d,
           })
         : _
     );
   return {
-    top: (A.top - w.top + g.top) / v.y,
-    bottom: (w.bottom - A.bottom + g.bottom) / v.y,
-    left: (A.left - w.left + g.left) / v.x,
-    right: (w.right - A.right + g.right) / v.x,
+    top: (S.top - w.top + g.top) / v.y,
+    bottom: (w.bottom - S.bottom + g.bottom) / v.y,
+    left: (S.left - w.left + g.left) / v.x,
+    right: (w.right - S.right + g.right) / v.x,
   };
 }
 const pa = (t) => ({
@@ -2295,18 +2295,18 @@ const pa = (t) => ({
         m = _s(o),
         g = ws(m),
         b = await n.getDimensions(h),
-        $ = m === 'y',
-        A = $ ? 'top' : 'left',
-        _ = $ ? 'bottom' : 'right',
-        C = $ ? 'clientHeight' : 'clientWidth',
+        C = m === 'y',
+        S = C ? 'top' : 'left',
+        _ = C ? 'bottom' : 'right',
+        $ = C ? 'clientHeight' : 'clientWidth',
         v = a.reference[g] + a.reference[m] - p[m] - a.floating[g],
         w = p[m] - a.reference[m],
         P = await (n.getOffsetParent == null ? void 0 : n.getOffsetParent(h));
-      let M = P ? P[C] : 0;
-      (!M || !(await (n.isElement == null ? void 0 : n.isElement(P)))) && (M = c.floating[C] || a.floating[g]);
+      let M = P ? P[$] : 0;
+      (!M || !(await (n.isElement == null ? void 0 : n.isElement(P)))) && (M = c.floating[$] || a.floating[g]);
       const F = v / 2 - w / 2,
         O = M / 2 - b[g] / 2 - 1,
-        E = oe(u[A], O),
+        E = oe(u[S], O),
         ot = oe(u[_], O),
         tt = E,
         ft = M - b[g] - ot,
@@ -2337,21 +2337,21 @@ const pa = (t) => ({
               fallbackStrategy: m = 'bestFit',
               fallbackAxisSideDirection: g = 'none',
               flipAlignment: b = !0,
-              ...$
+              ...C
             } = Ee(t, e);
           if ((i = a.arrow) != null && i.alignmentOffset) return {};
-          const A = re(o),
+          const S = re(o),
             _ = me(c),
-            C = re(c) === c,
+            $ = re(c) === c,
             v = await (d.isRTL == null ? void 0 : d.isRTL(h.floating)),
-            w = p || (C || !b ? [Si(c)] : la(c)),
+            w = p || ($ || !b ? [Si(c)] : la(c)),
             P = g !== 'none';
           !p && P && w.push(...da(c, b, g, v));
           const M = [c, ...w],
-            F = await xs(e, $),
+            F = await xs(e, C),
             O = [];
           let E = ((s = a.flip) == null ? void 0 : s.overflows) || [];
-          if ((f && O.push(F[A]), u)) {
+          if ((f && O.push(F[S]), u)) {
             const et = na(o, n, v);
             O.push(F[et[0]], F[et[1]]);
           }
@@ -2444,9 +2444,9 @@ const ga = function (t) {
               mainAxis: a = !0,
               crossAxis: n = !1,
               limiter: c = {
-                fn: ($) => {
-                  let { x: A, y: _ } = $;
-                  return { x: A, y: _ };
+                fn: (C) => {
+                  let { x: S, y: _ } = C;
+                  return { x: S, y: _ };
                 },
               },
               ...d
@@ -2458,18 +2458,18 @@ const ga = function (t) {
           let m = h[p],
             g = h[u];
           if (a) {
-            const $ = p === 'y' ? 'top' : 'left',
-              A = p === 'y' ? 'bottom' : 'right',
-              _ = m + f[$],
-              C = m - f[A];
-            m = ts(_, m, C);
+            const C = p === 'y' ? 'top' : 'left',
+              S = p === 'y' ? 'bottom' : 'right',
+              _ = m + f[C],
+              $ = m - f[S];
+            m = ts(_, m, $);
           }
           if (n) {
-            const $ = u === 'y' ? 'top' : 'left',
-              A = u === 'y' ? 'bottom' : 'right',
-              _ = g + f[$],
-              C = g - f[A];
-            g = ts(_, g, C);
+            const C = u === 'y' ? 'top' : 'left',
+              S = u === 'y' ? 'bottom' : 'right',
+              _ = g + f[C],
+              $ = g - f[S];
+            g = ts(_, g, $);
           }
           const b = c.fn({ ...e, [p]: m, [u]: g });
           return { ...b, data: { x: b.x - i, y: b.y - s, enabled: { [p]: a, [u]: n } } };
@@ -2492,21 +2492,21 @@ const ga = function (t) {
             p = Te(o),
             m = me(o) === 'y',
             { width: g, height: b } = a.floating;
-          let $, A;
+          let C, S;
           u === 'top' || u === 'bottom'
-            ? (($ = u),
-              (A =
+            ? ((C = u),
+              (S =
                 p === ((await (n.isRTL == null ? void 0 : n.isRTL(c.floating))) ? 'start' : 'end') ? 'left' : 'right'))
-            : ((A = u), ($ = p === 'end' ? 'top' : 'bottom'));
+            : ((S = u), (C = p === 'end' ? 'top' : 'bottom'));
           const _ = b - f.top - f.bottom,
-            C = g - f.left - f.right,
-            v = oe(b - f[$], _),
-            w = oe(g - f[A], C),
+            $ = g - f.left - f.right,
+            v = oe(b - f[C], _),
+            w = oe(g - f[S], $),
             P = !e.middlewareData.shift;
           let M = v,
             F = w;
           if (
-            ((i = e.middlewareData.shift) != null && i.enabled.x && (F = C),
+            ((i = e.middlewareData.shift) != null && i.enabled.x && (F = $),
             (s = e.middlewareData.shift) != null && s.enabled.y && (M = _),
             P && !p)
           ) {
@@ -2673,12 +2673,12 @@ function ge(t, e, i, s) {
     let g = p,
       b = is(g);
     for (; b && s && m !== g; ) {
-      const $ = $e(b),
-        A = b.getBoundingClientRect(),
+      const C = $e(b),
+        S = b.getBoundingClientRect(),
         _ = Pt(b),
-        C = A.left + (b.clientLeft + parseFloat(_.paddingLeft)) * $.x,
-        v = A.top + (b.clientTop + parseFloat(_.paddingTop)) * $.y;
-      (d *= $.x), (h *= $.y), (f *= $.x), (u *= $.y), (d += C), (h += v), (g = Ct(b)), (b = is(g));
+        $ = S.left + (b.clientLeft + parseFloat(_.paddingLeft)) * C.x,
+        v = S.top + (b.clientTop + parseFloat(_.paddingTop)) * C.y;
+      (d *= C.x), (h *= C.y), (f *= C.x), (u *= C.y), (d += $), (h += v), (g = Ct(b)), (b = is(g));
     }
   }
   return zi({ width: f, height: u, x: d, y: h });
@@ -2899,9 +2899,9 @@ function Pa(t, e) {
     if ((c || e(), !p || !m)) return;
     const g = fi(u),
       b = fi(o.clientWidth - (f + p)),
-      $ = fi(o.clientHeight - (u + m)),
-      A = fi(f),
-      C = { rootMargin: -g + 'px ' + -b + 'px ' + -$ + 'px ' + -A + 'px', threshold: xt(0, oe(1, d)) || 1 };
+      C = fi(o.clientHeight - (u + m)),
+      S = fi(f),
+      $ = { rootMargin: -g + 'px ' + -b + 'px ' + -C + 'px ' + -S + 'px', threshold: xt(0, oe(1, d)) || 1 };
     let v = !0;
     function w(P) {
       const M = P[0].intersectionRatio;
@@ -2916,9 +2916,9 @@ function Pa(t, e) {
       M === 1 && !Oo(h, t.getBoundingClientRect()) && n(), (v = !1);
     }
     try {
-      i = new IntersectionObserver(w, { ...C, root: o.ownerDocument });
+      i = new IntersectionObserver(w, { ...$, root: o.ownerDocument });
     } catch {
-      i = new IntersectionObserver(w, C);
+      i = new IntersectionObserver(w, $);
     }
     i.observe(t);
   }
@@ -2935,23 +2935,23 @@ function Oa(t, e, i, s) {
     } = s,
     h = Cs(t),
     f = o || a ? [...(h ? ei(h) : []), ...ei(e)] : [];
-  f.forEach((A) => {
-    o && A.addEventListener('scroll', i, { passive: !0 }), a && A.addEventListener('resize', i);
+  f.forEach((S) => {
+    o && S.addEventListener('scroll', i, { passive: !0 }), a && S.addEventListener('resize', i);
   });
   const u = h && c ? Pa(h, i) : null;
   let p = -1,
     m = null;
   n &&
-    ((m = new ResizeObserver((A) => {
-      let [_] = A;
+    ((m = new ResizeObserver((S) => {
+      let [_] = S;
       _ &&
         _.target === h &&
         m &&
         (m.unobserve(e),
         cancelAnimationFrame(p),
         (p = requestAnimationFrame(() => {
-          var C;
-          (C = m) == null || C.observe(e);
+          var $;
+          ($ = m) == null || $.observe(e);
         }))),
         i();
     })),
@@ -2959,20 +2959,20 @@ function Oa(t, e, i, s) {
     m.observe(e));
   let g,
     b = d ? ge(t) : null;
-  d && $();
-  function $() {
-    const A = ge(t);
-    b && !Oo(b, A) && i(), (b = A), (g = requestAnimationFrame($));
+  d && C();
+  function C() {
+    const S = ge(t);
+    b && !Oo(b, S) && i(), (b = S), (g = requestAnimationFrame(C));
   }
   return (
     i(),
     () => {
-      var A;
+      var S;
       f.forEach((_) => {
         o && _.removeEventListener('scroll', i), a && _.removeEventListener('resize', i);
       }),
         u == null || u(),
-        (A = m) == null || A.disconnect(),
+        (S = m) == null || S.disconnect(),
         (m = null),
         d && cancelAnimationFrame(g);
     }
@@ -3085,7 +3085,7 @@ function Ua(t) {
     ('contextElement' in t ? t instanceof Element : !0)
   );
 }
-var U = class extends z {
+var U = class extends A {
   constructor() {
     super(...arguments),
       (this.localize = new N(this)),
@@ -3429,7 +3429,7 @@ function x(t, e) {
     };
   };
 }
-var nt = class extends z {
+var nt = class extends A {
   constructor() {
     super(),
       (this.localize = new N(this)),
@@ -4168,7 +4168,7 @@ var Ve = Symbol(),
   mi = Symbol(),
   Ki,
   Yi = new Map(),
-  j = class extends z {
+  j = class extends A {
     constructor() {
       super(...arguments), (this.initialRender = !1), (this.svg = null), (this.label = ''), (this.library = 'default');
     }
@@ -4267,7 +4267,7 @@ r([x(['name', 'src', 'library'])], j.prototype, 'setIcon', 1);
  * @license
  * Copyright 2018 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */ const S = (t) => t ?? K;
+ */ const z = (t) => t ?? K;
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -4295,7 +4295,7 @@ r([x(['name', 'src', 'library'])], j.prototype, 'setIcon', 1);
     }
   }
 );
-var rt = class extends z {
+var rt = class extends A {
   constructor() {
     super(...arguments),
       (this.formControlController = new Zt(this, {
@@ -4385,7 +4385,7 @@ var rt = class extends z {
             type="checkbox"
             title=${this.title}
             name=${this.name}
-            value=${S(this.value)}
+            value=${z(this.value)}
             .indeterminate=${be(this.indeterminate)}
             .checked=${be(this.checked)}
             .disabled=${this.disabled}
@@ -4516,7 +4516,7 @@ var cn = T`
     }
   }
 `,
-  li = class extends z {
+  li = class extends A {
     constructor() {
       super(...arguments), (this.localize = new N(this));
     }
@@ -4537,7 +4537,7 @@ li.styles = [D, cn];
  */ function Zs(t, e, i) {
   return t ? e(t) : i == null ? void 0 : i(t);
 }
-var Z = class as extends z {
+var Z = class as extends A {
   constructor() {
     super(...arguments),
       (this.localize = new N(this)),
@@ -4744,7 +4744,7 @@ function Js(t, e = !1) {
   }
   o(t), s(t);
 }
-var ye = class extends z {
+var ye = class extends A {
   constructor() {
     super(),
       (this.selection = 'single'),
@@ -4950,7 +4950,7 @@ var dn = T`
   }
 `,
   hn = 0,
-  ci = class extends z {
+  ci = class extends A {
     constructor() {
       super(...arguments),
         (this.attrId = ++hn),
@@ -5186,7 +5186,7 @@ var un = T`
       return t(e, ...i);
     },
   Ke = mn(y);
-var at = class extends z {
+var at = class extends A {
   constructor() {
     super(...arguments), (this.hasFocus = !1), (this.label = ''), (this.disabled = !1);
   }
@@ -5215,13 +5215,13 @@ var at = class extends z {
       <${e}
         part="base"
         class=${I({ 'icon-button': !0, 'icon-button--disabled': !t && this.disabled, 'icon-button--focused': this.hasFocus })}
-        ?disabled=${S(t ? void 0 : this.disabled)}
-        type=${S(t ? void 0 : 'button')}
-        href=${S(t ? this.href : void 0)}
-        target=${S(t ? this.target : void 0)}
-        download=${S(t ? this.download : void 0)}
-        rel=${S(t && this.target ? 'noreferrer noopener' : void 0)}
-        role=${S(t ? void 0 : 'button')}
+        ?disabled=${z(t ? void 0 : this.disabled)}
+        type=${z(t ? void 0 : 'button')}
+        href=${z(t ? this.href : void 0)}
+        target=${z(t ? this.target : void 0)}
+        download=${z(t ? this.download : void 0)}
+        rel=${z(t && this.target ? 'noreferrer noopener' : void 0)}
+        role=${z(t ? void 0 : 'button')}
         aria-disabled=${this.disabled ? 'true' : 'false'}
         aria-label="${this.label}"
         tabindex=${this.disabled ? '-1' : '0'}
@@ -5231,9 +5231,9 @@ var at = class extends z {
       >
         <sl-icon
           class="icon-button__icon"
-          name=${S(this.name)}
-          library=${S(this.library)}
-          src=${S(this.src)}
+          name=${z(this.name)}
+          library=${z(this.library)}
+          src=${z(this.src)}
           aria-hidden="true"
         ></sl-icon>
       </${e}>
@@ -5252,7 +5252,7 @@ r([l()], at.prototype, 'target', 2);
 r([l()], at.prototype, 'download', 2);
 r([l()], at.prototype, 'label', 2);
 r([l({ type: Boolean, reflect: !0 })], at.prototype, 'disabled', 2);
-var ne = class extends z {
+var ne = class extends A {
   constructor() {
     super(...arguments),
       (this.localize = new N(this)),
@@ -5475,7 +5475,7 @@ var gn = T`
     overflow-y: hidden;
   }
 `,
-  H = class extends z {
+  H = class extends A {
     constructor() {
       super(...arguments),
         (this.formControlController = new Zt(this, { assumeInteractionOn: ['sl-blur', 'sl-input'] })),
@@ -5616,21 +5616,21 @@ var gn = T`
               id="input"
               class="textarea__control"
               title=${this.title}
-              name=${S(this.name)}
+              name=${z(this.name)}
               .value=${be(this.value)}
               ?disabled=${this.disabled}
               ?readonly=${this.readonly}
               ?required=${this.required}
-              placeholder=${S(this.placeholder)}
-              rows=${S(this.rows)}
-              minlength=${S(this.minlength)}
-              maxlength=${S(this.maxlength)}
-              autocapitalize=${S(this.autocapitalize)}
-              autocorrect=${S(this.autocorrect)}
+              placeholder=${z(this.placeholder)}
+              rows=${z(this.rows)}
+              minlength=${z(this.minlength)}
+              maxlength=${z(this.maxlength)}
+              autocapitalize=${z(this.autocapitalize)}
+              autocorrect=${z(this.autocorrect)}
               ?autofocus=${this.autofocus}
-              spellcheck=${S(this.spellcheck)}
-              enterkeyhint=${S(this.enterkeyhint)}
-              inputmode=${S(this.inputmode)}
+              spellcheck=${z(this.spellcheck)}
+              enterkeyhint=${z(this.enterkeyhint)}
+              inputmode=${z(this.inputmode)}
               aria-describedby="help-text"
               @change=${this.handleChange}
               @input=${this.handleInput}
@@ -5764,7 +5764,7 @@ var bn = T`
   }
 `,
   vn = 0,
-  Ot = class extends z {
+  Ot = class extends A {
     constructor() {
       super(...arguments),
         (this.localize = new N(this)),
@@ -6070,7 +6070,7 @@ var yn = T`
     display: contents;
   }
 `,
-  di = class extends z {
+  di = class extends A {
     constructor() {
       super(...arguments), (this.observedElements = []), (this.disabled = !1);
     }
@@ -6160,7 +6160,7 @@ function ls(t, e, i = 'vertical', s = 'smooth') {
         ? e.scrollTo({ top: a, behavior: s })
         : a + t.clientHeight > f && e.scrollTo({ top: a - e.offsetHeight + t.clientHeight, behavior: s }));
 }
-var ht = class extends z {
+var ht = class extends A {
   constructor() {
     super(...arguments),
       (this.tabs = []),
@@ -6567,7 +6567,7 @@ function Ge(t, e) {
     (e == null ? void 0 : e.initialEvent) instanceof PointerEvent && i(e.initialEvent);
 }
 var eo = () => null,
-  $t = class extends z {
+  $t = class extends A {
     constructor() {
       super(...arguments),
         (this.isCollapsed = !1),
@@ -6734,7 +6734,7 @@ var eo = () => null,
       <div
         part="divider"
         class="divider"
-        tabindex=${S(this.disabled ? void 0 : '0')}
+        tabindex=${z(this.disabled ? void 0 : '0')}
         role="separator"
         aria-valuenow=${this.position}
         aria-valuemin="0"
@@ -6931,7 +6931,7 @@ var $n = T`
     }
   }
 `,
-  mt = class extends z {
+  mt = class extends A {
     constructor() {
       super(...arguments),
         (this.formControlController = new Zt(this, {
@@ -7023,7 +7023,7 @@ var $n = T`
             type="checkbox"
             title=${this.title}
             name=${this.name}
-            value=${S(this.value)}
+            value=${z(this.value)}
             .checked=${be(this.checked)}
             .disabled=${this.disabled}
             .required=${this.required}
@@ -7440,7 +7440,7 @@ var Sn = T`
 };
 (cs.directiveName = 'unsafeHTML'), (cs.resultType = 1);
 const ki = ai(cs);
-var B = class extends z {
+var B = class extends A {
   constructor() {
     super(...arguments),
       (this.formControlController = new Zt(this, { assumeInteractionOn: ['sl-blur', 'sl-input'] })),
@@ -8035,7 +8035,7 @@ var zn = T`
     }
   }
 `,
-  Ss = class extends z {
+  Ss = class extends A {
     constructor() {
       super(...arguments), (this.effect = 'none');
     }
@@ -8280,7 +8280,7 @@ var An = T`
     }
   }
 `,
-  X = class extends z {
+  X = class extends A {
     constructor() {
       super(...arguments),
         (this.formControlController = new Zt(this)),
@@ -8433,11 +8433,11 @@ var An = T`
               class="range__control"
               title=${this.title}
               type="range"
-              name=${S(this.name)}
+              name=${z(this.name)}
               ?disabled=${this.disabled}
-              min=${S(this.min)}
-              max=${S(this.max)}
-              step=${S(this.step)}
+              min=${z(this.min)}
+              max=${z(this.max)}
+              step=${z(this.step)}
               .value=${be(this.value.toString())}
               aria-describedby="help-text"
               @change=${this.handleChange}
@@ -8625,7 +8625,7 @@ var En = T`
       }
     }
   );
-var gt = class extends z {
+var gt = class extends A {
   constructor() {
     super(...arguments),
       (this.localize = new N(this)),
@@ -8798,7 +8798,7 @@ var Ln = [
     { max: 28512e6, value: 2592e6, unit: 'month' },
     { max: 1 / 0, value: 31536e6, unit: 'year' },
   ],
-  we = class extends z {
+  we = class extends A {
     constructor() {
       super(...arguments),
         (this.localize = new N(this)),
@@ -9470,7 +9470,7 @@ var Vo = T`
     z-index: -1;
   }
 `,
-  Mt = class extends z {
+  Mt = class extends A {
     constructor() {
       super(...arguments),
         (this.hasSlotController = new vt(this, '[default]', 'prefix', 'suffix')),
@@ -9515,7 +9515,7 @@ var Vo = T`
           class=${I({ button: !0, 'button--default': !0, 'button--small': this.size === 'small', 'button--medium': this.size === 'medium', 'button--large': this.size === 'large', 'button--checked': this.checked, 'button--disabled': this.disabled, 'button--focused': this.hasFocus, 'button--outline': !0, 'button--pill': this.pill, 'button--has-label': this.hasSlotController.test('[default]'), 'button--has-prefix': this.hasSlotController.test('prefix'), 'button--has-suffix': this.hasSlotController.test('suffix') })}
           aria-disabled=${this.disabled}
           type="button"
-          value=${S(this.value)}
+          value=${z(this.value)}
           @blur=${this.handleBlur}
           @focus=${this.handleFocus}
           @click=${this.handleClick}
@@ -9582,7 +9582,7 @@ var Dn = T`
     flex-wrap: nowrap;
   }
 `,
-  _e = class extends z {
+  _e = class extends A {
     constructor() {
       super(...arguments), (this.disableRole = !1), (this.label = '');
     }
@@ -9641,7 +9641,7 @@ function Ne(t) {
   const i = 'sl-button, sl-radio-button';
   return (e = t.closest(i)) != null ? e : t.querySelector(i);
 }
-var ut = class extends z {
+var ut = class extends A {
   constructor() {
     super(...arguments),
       (this.formControlController = new Zt(this)),
@@ -9942,7 +9942,7 @@ var On = T`
     -webkit-user-select: none;
   }
 `,
-  De = class extends z {
+  De = class extends A {
     constructor() {
       super(...arguments), (this.localize = new N(this)), (this.value = 0), (this.label = '');
     }
@@ -10006,27 +10006,27 @@ self.QrCreator = Ho;
       (u.level = d),
       (u.version = h),
       (u.O = g),
-      (u.a = function (b, $) {
-        return (b -= f), ($ -= f), 0 > b || b >= m || 0 > $ || $ >= m ? !1 : p.a(b, $);
+      (u.a = function (b, C) {
+        return (b -= f), (C -= f), 0 > b || b >= m || 0 > C || C >= m ? !1 : p.a(b, C);
       }),
       u
     );
   }
-  function i(c, d, h, f, u, p, m, g, b, $) {
-    function A(_, C, v, w, P, M, F) {
-      _ ? (c.lineTo(C + M, v + F), c.arcTo(C, v, w, P, p)) : c.lineTo(C, v);
+  function i(c, d, h, f, u, p, m, g, b, C) {
+    function S(_, $, v, w, P, M, F) {
+      _ ? (c.lineTo($ + M, v + F), c.arcTo($, v, w, P, p)) : c.lineTo($, v);
     }
     m ? c.moveTo(d + p, h) : c.moveTo(d, h),
-      A(g, f, h, f, u, -p, 0),
-      A(b, f, u, d, u, 0, -p),
-      A($, d, u, d, h, p, 0),
-      A(m, d, h, f, h, 0, p);
+      S(g, f, h, f, u, -p, 0),
+      S(b, f, u, d, u, 0, -p),
+      S(C, d, u, d, h, p, 0),
+      S(m, d, h, f, h, 0, p);
   }
-  function s(c, d, h, f, u, p, m, g, b, $) {
-    function A(_, C, v, w) {
-      c.moveTo(_ + v, C), c.lineTo(_, C), c.lineTo(_, C + w), c.arcTo(_, C, _ + v, C, p);
+  function s(c, d, h, f, u, p, m, g, b, C) {
+    function S(_, $, v, w) {
+      c.moveTo(_ + v, $), c.lineTo(_, $), c.lineTo(_, $ + w), c.arcTo(_, $, _ + v, $, p);
     }
-    m && A(d, h, p, p), g && A(f, h, -p, p), b && A(f, u, -p, -p), $ && A(d, u, p, -p);
+    m && S(d, h, p, p), g && S(f, h, -p, p), b && S(f, u, -p, -p), C && S(d, u, p, -p);
   }
   function o(c, d) {
     var h = d.fill;
@@ -10071,34 +10071,34 @@ self.QrCreator = Ho;
     )
       for (u = 0; u < f; u += 1) {
         var b = h,
-          $ = d.left + u * p,
-          A = d.top + m * p,
+          C = d.left + u * p,
+          S = d.top + m * p,
           _ = m,
-          C = u,
+          $ = u,
           v = g.a,
-          w = $ + p,
-          P = A + p,
+          w = C + p,
+          P = S + p,
           M = _ - 1,
           F = _ + 1,
-          O = C - 1,
-          E = C + 1,
+          O = $ - 1,
+          E = $ + 1,
           ot = Math.floor(Math.min(0.5, Math.max(0, d.R)) * p),
-          tt = v(_, C),
+          tt = v(_, $),
           ft = v(M, O),
-          et = v(M, C);
+          et = v(M, $);
         M = v(M, E);
         var It = v(_, E);
         (E = v(F, E)),
-          (C = v(F, C)),
+          ($ = v(F, $)),
           (F = v(F, O)),
           (_ = v(_, O)),
-          ($ = Math.round($)),
-          (A = Math.round(A)),
+          (C = Math.round(C)),
+          (S = Math.round(S)),
           (w = Math.round(w)),
           (P = Math.round(P)),
           tt
-            ? i(b, $, A, w, P, ot, !et && !_, !et && !It, !C && !It, !C && !_)
-            : s(b, $, A, w, P, ot, et && _ && ft, et && It && M, C && It && E, C && _ && F);
+            ? i(b, C, S, w, P, ot, !et && !_, !et && !It, !$ && !It, !$ && !_)
+            : s(b, C, S, w, P, ot, et && _ && ft, et && It && M, $ && It && E, $ && _ && F);
       }
     return o(h, d), h.fill(), c;
   }
@@ -10179,18 +10179,18 @@ self.QrCreator = Ho;
       return f;
     }
     function i(d, h) {
-      function f(_, C) {
+      function f(_, $) {
         for (var v = -1; 7 >= v; v += 1)
           if (!(-1 >= _ + v || g <= _ + v))
             for (var w = -1; 7 >= w; w += 1)
-              -1 >= C + w ||
-                g <= C + w ||
-                (m[_ + v][C + w] =
+              -1 >= $ + w ||
+                g <= $ + w ||
+                (m[_ + v][$ + w] =
                   (0 <= v && 6 >= v && (w == 0 || w == 6)) ||
                   (0 <= w && 6 >= w && (v == 0 || v == 6)) ||
                   (2 <= v && 4 >= v && 2 <= w && 4 >= w));
       }
-      function u(_, C) {
+      function u(_, $) {
         for (var v = (g = 4 * d + 17), w = Array(v), P = 0; P < v; P += 1) {
           w[P] = Array(v);
           for (var M = 0; M < v; M += 1) w[P][M] = null;
@@ -10206,7 +10206,7 @@ self.QrCreator = Ho;
           }
         for (v = 8; v < g - 8; v += 1) m[v][6] == null && (m[v][6] = v % 2 == 0);
         for (v = 8; v < g - 8; v += 1) m[6][v] == null && (m[6][v] = v % 2 == 0);
-        for (v = a.w((p << 3) | C), w = 0; 15 > w; w += 1)
+        for (v = a.w((p << 3) | $), w = 0; 15 > w; w += 1)
           (P = !_ && ((v >> w) & 1) == 1),
             (m[6 > w ? w : 8 > w ? w + 1 : g - 15 + w][8] = P),
             (m[8][8 > w ? g - w - 1 : 9 > w ? 15 - w : 14 - w] = P);
@@ -10216,8 +10216,8 @@ self.QrCreator = Ho;
           for (w = 0; 18 > w; w += 1) (P = !_ && ((v >> w) & 1) == 1), (m[(w % 3) + g - 8 - 3][Math.floor(w / 3)] = P);
         }
         if (b == null) {
-          for (_ = c.I(d, p), v = e(), w = 0; w < $.length; w += 1)
-            (P = $[w]), v.put(4, 4), v.put(P.b(), a.f(4, d)), P.write(v);
+          for (_ = c.I(d, p), v = e(), w = 0; w < C.length; w += 1)
+            (P = C[w]), v.put(4, 4), v.put(P.b(), a.f(4, d)), P.write(v);
           for (w = P = 0; w < _.length; w += 1) P += _[w].j;
           if (v.f() > 8 * P) throw Error('code length overflow. (' + v.f() + '>' + 8 * P + ')');
           for (v.f() + 4 <= 8 * P && v.put(0, 4); v.f() % 8 != 0; ) v.m(!1);
@@ -10242,13 +10242,13 @@ self.QrCreator = Ho;
             for (O = 0; O < _.length; O += 1) E < F[O].length && ((v[ot] = F[O][E]), (ot += 1));
           b = v;
         }
-        for (_ = b, v = -1, w = g - 1, P = 7, M = 0, C = a.F(C), F = g - 1; 0 < F; F -= 2)
+        for (_ = b, v = -1, w = g - 1, P = 7, M = 0, $ = a.F($), F = g - 1; 0 < F; F -= 2)
           for (F == 6 && --F; ; ) {
             for (O = 0; 2 > O; O += 1)
               m[w][F - O] == null &&
                 ((E = !1),
                 M < _.length && (E = ((_[M] >>> P) & 1) == 1),
-                C(w, F - O) && (E = !E),
+                $(w, F - O) && (E = !E),
                 (m[w][F - O] = E),
                 --P,
                 P == -1 && ((M += 1), (P = 7)));
@@ -10262,28 +10262,28 @@ self.QrCreator = Ho;
         m = null,
         g = 0,
         b = null,
-        $ = [],
-        A = {
+        C = [],
+        S = {
           u: function (_) {
-            (_ = t(_)), $.push(_), (b = null);
+            (_ = t(_)), C.push(_), (b = null);
           },
-          a: function (_, C) {
-            if (0 > _ || g <= _ || 0 > C || g <= C) throw Error(_ + ',' + C);
-            return m[_][C];
+          a: function (_, $) {
+            if (0 > _ || g <= _ || 0 > $ || g <= $) throw Error(_ + ',' + $);
+            return m[_][$];
           },
           h: function () {
             return g;
           },
           J: function () {
-            for (var _ = 0, C = 0, v = 0; 8 > v; v += 1) {
+            for (var _ = 0, $ = 0, v = 0; 8 > v; v += 1) {
               u(!0, v);
-              var w = a.D(A);
-              (v == 0 || _ > w) && ((_ = w), (C = v));
+              var w = a.D(S);
+              (v == 0 || _ > w) && ((_ = w), ($ = v));
             }
-            u(!1, C);
+            u(!1, $);
           },
         };
-      return A;
+      return S;
     }
     function s(d, h) {
       if (typeof d.length > 'u') throw Error(d.length + '/' + h);
@@ -10437,20 +10437,20 @@ self.QrCreator = Ho;
             D: function (u) {
               for (var p = u.h(), m = 0, g = 0; g < p; g += 1)
                 for (var b = 0; b < p; b += 1) {
-                  for (var $ = 0, A = u.a(g, b), _ = -1; 1 >= _; _ += 1)
+                  for (var C = 0, S = u.a(g, b), _ = -1; 1 >= _; _ += 1)
                     if (!(0 > g + _ || p <= g + _))
-                      for (var C = -1; 1 >= C; C += 1)
-                        0 > b + C || p <= b + C || ((_ != 0 || C != 0) && A == u.a(g + _, b + C) && ($ += 1));
-                  5 < $ && (m += 3 + $ - 5);
+                      for (var $ = -1; 1 >= $; $ += 1)
+                        0 > b + $ || p <= b + $ || ((_ != 0 || $ != 0) && S == u.a(g + _, b + $) && (C += 1));
+                  5 < C && (m += 3 + C - 5);
                 }
               for (g = 0; g < p - 1; g += 1)
                 for (b = 0; b < p - 1; b += 1)
-                  ($ = 0),
-                    u.a(g, b) && ($ += 1),
-                    u.a(g + 1, b) && ($ += 1),
-                    u.a(g, b + 1) && ($ += 1),
-                    u.a(g + 1, b + 1) && ($ += 1),
-                    ($ == 0 || $ == 4) && (m += 3);
+                  (C = 0),
+                    u.a(g, b) && (C += 1),
+                    u.a(g + 1, b) && (C += 1),
+                    u.a(g, b + 1) && (C += 1),
+                    u.a(g + 1, b + 1) && (C += 1),
+                    (C == 0 || C == 4) && (m += 3);
               for (g = 0; g < p; g += 1)
                 for (b = 0; b < p - 6; b += 1)
                   u.a(g, b) &&
@@ -10471,8 +10471,8 @@ self.QrCreator = Ho;
                     !u.a(g + 5, b) &&
                     u.a(g + 6, b) &&
                     (m += 40);
-              for (b = $ = 0; b < p; b += 1) for (g = 0; g < p; g += 1) u.a(g, b) && ($ += 1);
-              return (m += (Math.abs((100 * $) / p / p - 50) / 5) * 10);
+              for (b = C = 0; b < p; b += 1) for (g = 0; g < p; g += 1) u.a(g, b) && (C += 1);
+              return (m += (Math.abs((100 * C) / p / p - 50) / 5) * 10);
             },
           };
         return f;
@@ -10674,10 +10674,10 @@ self.QrCreator = Ho;
               if (typeof m > 'u') throw Error('bad rs block @ typeNumber:' + u + '/errorCorrectLevel:' + p);
               (u = m.length / 3), (p = []);
               for (var g = 0; g < u; g += 1)
-                for (var b = m[3 * g], $ = m[3 * g + 1], A = m[3 * g + 2], _ = 0; _ < b; _ += 1) {
-                  var C = A,
+                for (var b = m[3 * g], C = m[3 * g + 1], S = m[3 * g + 2], _ = 0; _ < b; _ += 1) {
+                  var $ = S,
                     v = {};
-                  (v.o = $), (v.j = C), p.push(v);
+                  (v.o = C), (v.j = $), p.push(v);
                 }
               return p;
             },
@@ -10688,7 +10688,7 @@ self.QrCreator = Ho;
   })()
 );
 const Rn = QrCreator;
-var Rt = class extends z {
+var Rt = class extends A {
   constructor() {
     super(...arguments),
       (this.value = ''),
@@ -10853,7 +10853,7 @@ var Fn = T`
     -webkit-user-select: none;
   }
 `,
-  Kt = class extends z {
+  Kt = class extends A {
     constructor() {
       super(),
         (this.checked = !1),
@@ -10998,7 +10998,7 @@ var Bn = T`
     }
   }
 `,
-  Lt = class extends z {
+  Lt = class extends A {
     constructor() {
       super(...arguments),
         (this.localize = new N(this)),
@@ -11161,7 +11161,7 @@ var Vn = T`
     }
   }
 `,
-  hi = class extends z {
+  hi = class extends A {
     constructor() {
       super(...arguments),
         (this.localize = new N(this)),
@@ -11175,7 +11175,7 @@ var Vn = T`
         part="base"
         class=${I({ 'progress-bar': !0, 'progress-bar--indeterminate': this.indeterminate, 'progress-bar--rtl': this.localize.dir() === 'rtl' })}
         role="progressbar"
-        title=${S(this.title)}
+        title=${z(this.title)}
         aria-label=${this.label.length > 0 ? this.label : this.localize.term('progress')}
         aria-valuemin="0"
         aria-valuemax="100"
@@ -11198,7 +11198,7 @@ var Nn = T`
     display: contents;
   }
 `,
-  Yt = class extends z {
+  Yt = class extends A {
     constructor() {
       super(...arguments),
         (this.attrOldValue = !1),
@@ -11283,7 +11283,7 @@ var Hn = T`
     --spacing: var(--sl-spacing-x-small);
   }
 `,
-  zs = class extends z {
+  zs = class extends A {
     connectedCallback() {
       super.connectedCallback(), this.setAttribute('role', 'menu');
     }
@@ -11656,7 +11656,7 @@ var Un = T`
     -moz-appearance: textfield;
   }
 `,
-  R = class extends z {
+  R = class extends A {
     constructor() {
       super(...arguments),
         (this.formControlController = new Zt(this, { assumeInteractionOn: ['sl-blur', 'sl-input'] })),
@@ -11833,25 +11833,25 @@ var Un = T`
               class="input__control"
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title}
-              name=${S(this.name)}
+              name=${z(this.name)}
               ?disabled=${this.disabled}
               ?readonly=${this.readonly}
               ?required=${this.required}
-              placeholder=${S(this.placeholder)}
-              minlength=${S(this.minlength)}
-              maxlength=${S(this.maxlength)}
-              min=${S(this.min)}
-              max=${S(this.max)}
-              step=${S(this.step)}
+              placeholder=${z(this.placeholder)}
+              minlength=${z(this.minlength)}
+              maxlength=${z(this.maxlength)}
+              min=${z(this.min)}
+              max=${z(this.max)}
+              step=${z(this.step)}
               .value=${be(this.value)}
-              autocapitalize=${S(this.autocapitalize)}
-              autocomplete=${S(this.autocomplete)}
-              autocorrect=${S(this.autocorrect)}
+              autocapitalize=${z(this.autocapitalize)}
+              autocomplete=${z(this.autocomplete)}
+              autocorrect=${z(this.autocorrect)}
               ?autofocus=${this.autofocus}
               spellcheck=${this.spellcheck}
-              pattern=${S(this.pattern)}
-              enterkeyhint=${S(this.enterkeyhint)}
-              inputmode=${S(this.inputmode)}
+              pattern=${z(this.pattern)}
+              enterkeyhint=${z(this.enterkeyhint)}
+              inputmode=${z(this.inputmode)}
               aria-describedby="help-text"
               @change=${this.handleChange}
               @input=${this.handleInput}
@@ -12420,7 +12420,7 @@ var Zn = class {
         : y` <slot name="submenu" hidden></slot> `;
     }
   },
-  St = class extends z {
+  St = class extends A {
     constructor() {
       super(...arguments),
         (this.localize = new N(this)),
@@ -12544,7 +12544,7 @@ var Jn = T`
     -webkit-user-select: none;
   }
 `,
-  qo = class extends z {
+  qo = class extends A {
     render() {
       return y` <slot part="base" class="menu-label"></slot> `;
     }
@@ -12623,7 +12623,7 @@ var tl = T`
     outline-offset: var(--sl-focus-ring-offset);
   }
 `,
-  xe = class extends z {
+  xe = class extends A {
     constructor() {
       super(...arguments), (this.localize = new N(this)), (this.position = 50);
     }
@@ -12728,7 +12728,7 @@ function il(t, e = 'cors') {
   });
   return Gi.set(t, s), s;
 }
-var Pe = class extends z {
+var Pe = class extends A {
   constructor() {
     super(...arguments), (this.mode = 'cors'), (this.allowScripts = !1);
   }
@@ -12766,7 +12766,7 @@ r([x('src')], Pe.prototype, 'handleSrcChange', 1);
 Pe.define('sl-include');
 j.define('sl-icon');
 at.define('sl-icon-button');
-var Ri = class extends z {
+var Ri = class extends A {
   constructor() {
     super(...arguments),
       (this.localize = new N(this)),
@@ -12789,7 +12789,7 @@ r([l({ type: Number })], Ri.prototype, 'value', 2);
 r([l()], Ri.prototype, 'unit', 2);
 r([l()], Ri.prototype, 'display', 2);
 Ri.define('sl-format-bytes');
-var zt = class extends z {
+var zt = class extends A {
   constructor() {
     super(...arguments), (this.localize = new N(this)), (this.date = new Date()), (this.hourFormat = 'auto');
   }
@@ -12817,7 +12817,7 @@ r([l({ attribute: 'time-zone-name' })], zt.prototype, 'timeZoneName', 2);
 r([l({ attribute: 'time-zone' })], zt.prototype, 'timeZone', 2);
 r([l({ attribute: 'hour-format' })], zt.prototype, 'hourFormat', 2);
 zt.define('sl-format-date');
-var Ft = class extends z {
+var Ft = class extends A {
   constructor() {
     super(...arguments),
       (this.localize = new N(this)),
@@ -12874,7 +12874,7 @@ var sl = T`
     margin: 0 var(--spacing);
   }
 `,
-  Fi = class extends z {
+  Fi = class extends A {
     constructor() {
       super(...arguments), (this.vertical = !1);
     }
@@ -13210,7 +13210,7 @@ var He = [],
 function so(t) {
   return t.charAt(0).toUpperCase() + t.slice(1);
 }
-var At = class extends z {
+var At = class extends A {
   constructor() {
     super(...arguments),
       (this.hasSlotController = new vt(this, 'footer')),
@@ -13321,8 +13321,8 @@ var At = class extends z {
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? 'false' : 'true'}
-          aria-label=${S(this.noHeader ? this.label : void 0)}
-          aria-labelledby=${S(this.noHeader ? void 0 : 'title')}
+          aria-label=${z(this.noHeader ? this.label : void 0)}
+          aria-labelledby=${z(this.noHeader ? void 0 : 'title')}
           tabindex="0"
         >
           ${
@@ -13497,7 +13497,7 @@ var hl = T`
     max-height: var(--auto-size-available-height) !important;
   }
 `,
-  pt = class extends z {
+  pt = class extends A {
     constructor() {
       super(...arguments),
         (this.localize = new N(this)),
@@ -13674,7 +13674,7 @@ var hl = T`
         shift
         auto-size="vertical"
         auto-size-padding="10"
-        sync=${S(this.sync ? this.sync : void 0)}
+        sync=${z(this.sync ? this.sync : void 0)}
         class=${I({ dropdown: !0, 'dropdown--open': this.open })}
       >
         <slot
@@ -13769,7 +13769,7 @@ var ul = T`
     display: inline-flex;
   }
 `,
-  lt = class extends z {
+  lt = class extends A {
     constructor() {
       super(...arguments),
         (this.localize = new N(this)),
@@ -13990,7 +13990,7 @@ var pl = T`
     padding: var(--sl-spacing-medium);
   }
 `,
-  Bt = class extends z {
+  Bt = class extends A {
     constructor() {
       super(...arguments), (this.localize = new N(this)), (this.open = !1), (this.disabled = !1);
     }
@@ -14226,7 +14226,7 @@ var fl = T`
     }
   }
 `,
-  Xt = class extends z {
+  Xt = class extends A {
     constructor() {
       super(...arguments),
         (this.hasSlotController = new vt(this, 'footer')),
@@ -14332,8 +14332,8 @@ var fl = T`
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? 'false' : 'true'}
-          aria-label=${S(this.noHeader ? this.label : void 0)}
-          aria-labelledby=${S(this.noHeader ? void 0 : 'title')}
+          aria-label=${z(this.noHeader ? this.label : void 0)}
+          aria-labelledby=${z(this.noHeader ? void 0 : 'title')}
           tabindex="-1"
         >
           ${
@@ -14734,7 +14734,7 @@ var ml = T`
     cursor: not-allowed;
   }
 `,
-  W = class extends z {
+  W = class extends A {
     constructor() {
       super(...arguments),
         (this.formControlController = new Zt(this, { assumeInteractionOn: ['click'] })),
@@ -14816,16 +14816,16 @@ var ml = T`
       <${e}
         part="base"
         class=${I({ button: !0, 'button--default': this.variant === 'default', 'button--primary': this.variant === 'primary', 'button--success': this.variant === 'success', 'button--neutral': this.variant === 'neutral', 'button--warning': this.variant === 'warning', 'button--danger': this.variant === 'danger', 'button--text': this.variant === 'text', 'button--small': this.size === 'small', 'button--medium': this.size === 'medium', 'button--large': this.size === 'large', 'button--caret': this.caret, 'button--circle': this.circle, 'button--disabled': this.disabled, 'button--focused': this.hasFocus, 'button--loading': this.loading, 'button--standard': !this.outline, 'button--outline': this.outline, 'button--pill': this.pill, 'button--rtl': this.localize.dir() === 'rtl', 'button--has-label': this.hasSlotController.test('[default]'), 'button--has-prefix': this.hasSlotController.test('prefix'), 'button--has-suffix': this.hasSlotController.test('suffix') })}
-        ?disabled=${S(t ? void 0 : this.disabled)}
-        type=${S(t ? void 0 : this.type)}
+        ?disabled=${z(t ? void 0 : this.disabled)}
+        type=${z(t ? void 0 : this.type)}
         title=${this.title}
-        name=${S(t ? void 0 : this.name)}
-        value=${S(t ? void 0 : this.value)}
-        href=${S(t && !this.disabled ? this.href : void 0)}
-        target=${S(t ? this.target : void 0)}
-        download=${S(t ? this.download : void 0)}
-        rel=${S(t ? this.rel : void 0)}
-        role=${S(t ? void 0 : 'button')}
+        name=${z(t ? void 0 : this.name)}
+        value=${z(t ? void 0 : this.value)}
+        href=${z(t && !this.disabled ? this.href : void 0)}
+        target=${z(t ? this.target : void 0)}
+        download=${z(t ? this.download : void 0)}
+        rel=${z(t ? this.rel : void 0)}
+        role=${z(t ? void 0 : 'button')}
         aria-disabled=${this.disabled ? 'true' : 'false'}
         tabindex=${this.disabled ? '-1' : '0'}
         @blur=${this.handleBlur}
@@ -15542,7 +15542,7 @@ class G {
   }
 }
 var co = 'EyeDropper' in window,
-  V = class extends z {
+  V = class extends A {
     constructor() {
       super(),
         (this.formControlController = new Zt(this)),
@@ -15946,7 +15946,7 @@ var co = 'EyeDropper' in window,
             style=${yt({ top: `${e}%`, left: `${t}%`, backgroundColor: this.getHexString(this.hue, this.saturation, this.brightness, this.alpha) })}
             role="application"
             aria-label="HSV"
-            tabindex=${S(this.disabled ? void 0 : '0')}
+            tabindex=${z(this.disabled ? void 0 : '0')}
             @keydown=${this.handleGridKeyDown}
           ></span>
         </div>
@@ -15969,7 +15969,7 @@ var co = 'EyeDropper' in window,
                 aria-valuemin="0"
                 aria-valuemax="360"
                 aria-valuenow=${`${Math.round(this.hue)}`}
-                tabindex=${S(this.disabled ? void 0 : '0')}
+                tabindex=${z(this.disabled ? void 0 : '0')}
                 @keydown=${this.handleHueKeyDown}
               ></span>
             </div>
@@ -16003,7 +16003,7 @@ var co = 'EyeDropper' in window,
                       aria-valuemin="0"
                       aria-valuemax="100"
                       aria-valuenow=${Math.round(this.alpha)}
-                      tabindex=${S(this.disabled ? void 0 : '0')}
+                      tabindex=${z(this.disabled ? void 0 : '0')}
                       @keydown=${this.handleAlphaKeyDown}
                     ></span>
                   </div>
@@ -16105,7 +16105,7 @@ var co = 'EyeDropper' in window,
                     <div
                       part="swatch"
                       class="color-picker__swatch color-picker__transparent-bg"
-                      tabindex=${S(this.disabled ? void 0 : '0')}
+                      tabindex=${z(this.disabled ? void 0 : '0')}
                       role="button"
                       aria-label=${o}
                       @click=${() => this.selectSwatch(o)}
@@ -16260,7 +16260,7 @@ var El = T`
     display: none;
   }
 `,
-  Yo = class extends z {
+  Yo = class extends A {
     constructor() {
       super(...arguments), (this.hasSlotController = new vt(this, 'footer', 'header', 'image'));
     }
@@ -16496,7 +16496,7 @@ var Tl = class {
   e ?? (e = t);
   for (let o = s; i > 0 ? o < e : e < o; o += i) yield o;
 }
-var J = class extends z {
+var J = class extends A {
   constructor() {
     super(...arguments),
       (this.loop = !1),
@@ -16915,7 +16915,7 @@ var Ol = T`
     object-fit: cover;
   }
 `,
-  Xo = class extends z {
+  Xo = class extends A {
     connectedCallback() {
       super.connectedCallback(), this.setAttribute('role', 'group');
     }
@@ -16934,7 +16934,7 @@ var Ml = T`
     flex-wrap: wrap;
   }
 `,
-  Oe = class extends z {
+  Oe = class extends A {
     constructor() {
       super(...arguments), (this.localize = new N(this)), (this.separatorDir = this.localize.dir()), (this.label = '');
     }
@@ -17073,7 +17073,7 @@ var Rl = T`
     }
   }
 `,
-  ui = class extends z {
+  ui = class extends A {
     constructor() {
       super(...arguments), (this.variant = 'primary'), (this.pill = !1), (this.pulse = !1);
     }
@@ -17178,7 +17178,7 @@ var Fl = T`
     -webkit-user-select: none;
   }
 `,
-  le = class extends z {
+  le = class extends A {
     constructor() {
       super(...arguments),
         (this.hasSlotController = new vt(this, 'prefix', 'suffix')),
@@ -17222,8 +17222,8 @@ var Fl = T`
                 part="label"
                 class="breadcrumb-item__label breadcrumb-item__label--link"
                 href="${this.href}"
-                target="${S(this.target ? this.target : void 0)}"
-                rel=${S(this.target ? this.rel : void 0)}
+                target="${z(this.target ? this.target : void 0)}"
+                rel=${z(this.target ? this.rel : void 0)}
               >
                 <slot @slotchange=${this.handleSlotChange}></slot>
               </a>
@@ -18056,7 +18056,7 @@ const Vl = [
       { value: 'Module' }
     )
   );
-var ct = class extends z {
+var ct = class extends A {
   constructor() {
     super(...arguments),
       (this.hasStarted = !1),
@@ -18250,7 +18250,7 @@ var Ld = T`
     overflow: hidden;
   }
 `,
-  Gt = class extends z {
+  Gt = class extends A {
     constructor() {
       super(...arguments),
         (this.hasError = !1),
@@ -18451,7 +18451,7 @@ var Id = T`
     display: none;
   }
 `,
-  Et = class de extends z {
+  Et = class de extends A {
     constructor() {
       super(...arguments),
         (this.hasSlotController = new vt(this, 'icon', 'suffix')),
@@ -18689,7 +18689,7 @@ var Pd = T`
     display: none;
   }
 `,
-  Vt = class extends z {
+  Vt = class extends A {
     constructor() {
       super(...arguments), (this.isLoaded = !1);
     }
@@ -18762,29 +18762,48 @@ r([x('play', { waitUntilFirstUpdate: !0 })], Vt.prototype, 'handlePlayChange', 1
 r([x('src')], Vt.prototype, 'handleSrcChange', 1);
 Vt.define('sl-animated-image');
 function Od() {
-  const t = document.querySelector('.login__container');
-  t.className = 'login__container';
-  const e = document.createElement('h1');
+  const t = document.querySelector('.login__container'),
+    e = document.createElement('h1');
   (e.textContent = 'Logga in'), (e.className = 'login__text');
-  const i = document.createElement('sl-input');
-  (i.placeholder = 'E-post eller telefonnummer'), (i.className = 'userField');
-  const s = document.createElement('sl-input');
-  s.setAttribute('type', 'password'),
-    s.setAttribute('password-toggle', ''),
-    (s.className = 'passwordField'),
-    (s.placeholder = 'Lösenord');
-  const o = document.createElement('h2');
-  (o.textContent = 'Glömt lösenordet?'), (o.className = 'forgotPassword__text');
-  const a = document.createElement('sl-button');
-  (a.className = 'yellow'),
-    a.setAttribute('variant', 'default'),
-    (a.textContent = 'Logga in'),
-    a.addEventListener('click', () => {
-      const c = JSON.parse(localStorage.getItem('userData'));
-      console.log(c.username);
-    });
+  const i = document.createElement('div');
+  (i.className = 'error-message'), (i.style.color = 'red');
+  const s = document.createElement('form');
+  s.id = 'loginForm';
+  const o = document.createElement('sl-input');
+  (o.placeholder = 'E-post eller telefonnummer'), (o.className = 'userField');
+  const a = document.createElement('sl-input');
+  a.setAttribute('type', 'password'),
+    a.setAttribute('password-toggle', ''),
+    (a.className = 'passwordField'),
+    (a.placeholder = 'Lösenord');
   const n = document.createElement('h2');
-  (n.textContent = 'Inte medlem? Registrera dig här!'), (n.className = 'login__msg'), t.append(e, i, s, o, a, n);
+  (n.textContent = 'Glömt lösenordet?'), (n.className = 'forgotPassword__text');
+  const c = document.createElement('sl-button');
+  (c.className = 'yellow'),
+    c.setAttribute('variant', 'default'),
+    (c.type = 'submit'),
+    (c.textContent = 'Logga in'),
+    s.addEventListener('submit', async (d) => {
+      d.preventDefault(), (i.textContent = '');
+      const h = o.value,
+        f = a.value,
+        u = { email: h, password: f };
+      try {
+        const p = await fetch('/newLogin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(u),
+          }),
+          m = await p.json();
+        p.ok
+          ? (console.log('Login success:', m), localStorage.setItem('token', m.token), (window.location.href = '/'))
+          : (console.error('Login failed:', m), (i.textContent = m.message));
+      } catch (p) {
+        console.error('Error during login:', p), (i.textContent = 'An error occurred during login.');
+      }
+    }),
+    s.append(e, o, a, n, i, c),
+    t.append(s);
 }
 function Md() {
   const t = document.querySelector('.login__container');
@@ -18834,8 +18853,21 @@ function Md() {
         c.textContent = 'Lösenord inte stämmer';
         return;
       }
-      const b = { telefonnummer: u, username: p, password: m };
-      console.log(b), localStorage.setItem('userData', JSON.stringify(b));
+      const b = { number: u, email: p, password: m };
+      console.log(b);
+      try {
+        const C = await fetch('/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(b),
+          }),
+          S = await C.json();
+        C.ok
+          ? (console.log('Registration success:', S), (window.location.href = '/loginM'))
+          : (console.error('Registration failed:', S), (c.textContent = S.message));
+      } catch (C) {
+        console.error('Error during registration:', C), (c.textContent = 'An error occurred during registration.');
+      }
     }),
     e.append(i, s, o, a, n, c, d),
     t.append(e, h);

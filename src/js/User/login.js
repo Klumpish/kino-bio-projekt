@@ -2,11 +2,17 @@ import '@shoelace-style/shoelace/dist/shoelace.js';
 
 export function createLoginForm() {
   const logInContainer = document.querySelector('.login__container');
-  logInContainer.className = 'login__container';
 
   const h1 = document.createElement('h1');
   h1.textContent = 'Logga in';
   h1.className = 'login__text';
+
+  const errorDiv = document.createElement('div'); // Div for error messages
+  errorDiv.className = 'error-message';
+  errorDiv.style.color = 'red';
+
+  const form = document.createElement('form');
+  form.id = 'loginForm';
 
   const userField = document.createElement('sl-input');
   userField.placeholder = 'E-post eller telefonnummer';
@@ -25,16 +31,45 @@ export function createLoginForm() {
   const button = document.createElement('sl-button');
   button.className = 'yellow';
   button.setAttribute('variant', 'default');
+  button.type = 'submit';
   button.textContent = 'Logga in';
 
-  button.addEventListener('click', () => {
-    const storedData = JSON.parse(localStorage.getItem('userData'));
-    console.log(storedData.username);
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    errorDiv.textContent = '';
+
+    const email = userField.value;
+    const password = passwordField.value;
+
+    const formData = {
+      email: email,
+      password: password,
+    };
+
+    try {
+      const response = await fetch('/newLogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Login success:', data);
+        localStorage.setItem('token', data.token);
+        window.location.href = '/';
+      } else {
+        console.error('Login failed:', data);
+        errorDiv.textContent = data.message;
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      errorDiv.textContent = 'An error occurred during login.';
+    }
   });
-
-  const h2Msg = document.createElement('h2');
-  h2Msg.textContent = 'Inte medlem? Registrera dig här!';
-  h2Msg.className = 'login__msg';
-
-  logInContainer.append(h1, userField, passwordField, h2_pswrd, button, h2Msg);
+  form.append(h1, userField, passwordField, h2_pswrd, errorDiv, button);
+  logInContainer.append(form);
 }
