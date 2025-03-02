@@ -74,6 +74,10 @@ function initApp(api) {
     response.render('login.ejs');
   });
 
+  app.get('/signup', async (request, response) => {
+    response.render('signup.ejs');
+  });
+
   app.get('/movies', async (request, response) => {
     const movies = await api.loadMovies();
     response.render('movies.ejs', { movies });
