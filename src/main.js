@@ -27,7 +27,7 @@ import { createRegisterForm } from './js/User/register.js';
 import { showProfile } from './js/User/profile.js';
 
 if (document.querySelector('.reviews__container')) {
-  const apiBase = 'http://localhost:5080';
+  const apiBase = '';
   const movieId = IdUtils.getMovieIdFromPath();
   const reviewBackend = new LoadMovieReviews(apiBase, movieId);
   const avRatingBackend = new LoadAverageRating(apiBase, movieId);
