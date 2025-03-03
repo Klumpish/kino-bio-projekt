@@ -1,4 +1,64 @@
-<%- include("./partials/header.ejs") %>0
+<%- include("./partials/header.ejs") %>
+<div id="membershipModal" class="ui modal">
+  <div class="ui modal-content">
+    <span class="close" onclick="closeModal('membershipModal')">&times;</span>
+    <h2>Välj alternativ</h2>
+    <button class="ui button" onclick="showSignup()">Registrera</button>
+    <button class="ui button" onclick="showLogin()">Logga In</button>
+
+    <!-- Signup Form -->
+    <div id="signupFormContainer" class="hidden">
+      <h2>Skapa Konto</h2>
+      <form id="signupForm" class="ui form">
+        <div class="field">
+          <label>Användarnamn</label>
+          <input type="text" placeholder="Användarnamn" required />
+        </div>
+        <div class="field">
+          <label>E-post</label>
+          <input type="email" placeholder="E-post" required />
+        </div>
+        <div class="field">
+          <label>Fullständigt namn</label>
+          <input type="text" placeholder="Fullständigt namn" required />
+        </div>
+        <div class="field">
+          <label>Lösenord</label>
+          <input type="password" placeholder="Lösenord" required />
+        </div>
+        <button type="submit" class="ui primary button">Registrera</button>
+      </form>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginFormContainer" class="hidden">
+      <h2>Logga in</h2>
+      <form id="loginForm" class="ui form">
+        <div class="field">
+          <label>Användarnamn</label>
+          <input type="text" placeholder="Användarnamn" required />
+        </div>
+        <div class="field">
+          <label>Lösenord</label>
+          <input type="password" placeholder="Lösenord" required />
+        </div>
+        <button type="submit" class="ui primary button">Logga in</button>
+      </form>
+    </div>
+
+    <!-- User Profile (after login/register) -->
+    <div id="profileInfoContainer" class="hidden">
+      <h2>Min Profil</h2>
+      <p><strong>Användarnamn:</strong> <span id="profileUsername"></span></p>
+      <p><strong>E-post:</strong> <span id="profileEmail"></span></p>
+      <p><strong>Fullständigt namn:</strong> <span id="profileFullName"></span></p>
+      <button class="ui red button" onclick="logout()">Logga ut</button>
+    </div>
+  </div>
+</div>
+
+
+
 <section class="topmovies">
   <h2 class="topmovies__header">TOPPLISTA PÅ KINO</h2>
   <ul class="topmovies__list">
@@ -87,3 +147,69 @@
   <img src="/static/dist/images/Kino_seats.png" alt="Image of the auditorium seats" class="features__image_2" />
 </section>
 <%- include("./partials/footer.ejs") %>
+
+<script>
+document.getElementById("membership-link").addEventListener("click", function (e) {
+  e.preventDefault();
+  openModal("membershipModal");
+});
+
+// Function to open the modal
+function openModal(modalId) {
+  document.getElementById(modalId).style.display = "block";
+}
+
+// Function to close the modal
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = "none";
+}
+
+// Show Signup form in modal
+function showSignup() {
+  document.getElementById("signupFormContainer").style.display = "block";
+  document.getElementById("loginFormContainer").style.display = "none";
+}
+
+// Show Login form in modal
+function showLogin() {
+  document.getElementById("loginFormContainer").style.display = "block";
+  document.getElementById("signupFormContainer").style.display = "none";
+}
+
+// Handle form submission for Signup
+document.getElementById("signupForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // Get form data and save to localStorage (or make an API request)
+  const username = e.target[0].value;
+  const email = e.target[1].value;
+  const fullName = e.target[2].value;
+  const password = e.target[3].value;
+
+  // Store user data in localStorage (you can also use cookies or a backend API here)
+  localStorage.setItem("user", JSON.stringify({ username, email, fullName, password }));
+
+  // Close the modal and redirect to the profile page
+  closeModal("membershipModal");
+  window.location.href = "/profile"; // Redirect to the profile page
+});
+
+// Handle form submission for Login
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // Get form data and check against localStorage (or make an API request)
+  const username = e.target[0].value;
+  const password = e.target[1].value;
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (user && user.username === username && user.password === password) {
+    // Successfully logged in, redirect to the profile page
+    closeModal("membershipModal");
+    window.location.href = "/profile"; // Redirect to the profile page
+  } else {
+    alert("Invalid username or password. Please try again.");
+  }
+});
+</script>
