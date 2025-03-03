@@ -24,6 +24,7 @@ import TopMoviesFetcher from './js/_topMoviesFetcher.js';
 import TopMoviesRenderer from './js/_topMoviesRenderer.js';
 import SignUp from './js/users/signup.js';
 import LogIn from './js/users/Login.js';
+import UserProfile from './js/users/UserProfile.js';
 
 if (document.querySelector('.reviews__container')) {
   const apiBase = 'http://localhost:5080';
@@ -101,5 +102,18 @@ document.addEventListener('DOMContentLoaded', () => {
   if (loginForm) {
     const loggingIn = new LogIn();
     loggingIn.initLogin(loginForm);
+  }
+
+  const profilePage = document.querySelector('#userProfile');
+  if (profilePage) {
+    const userProfile = new UserProfile();
+    userProfile.initProfile(profilePage);
+
+    const logoutButton = document.querySelector('#logoutButton');
+    if (logoutButton) {
+      logoutButton.addEventListener('click', () => {
+        userProfile.logout();
+      });
+    }
   }
 });

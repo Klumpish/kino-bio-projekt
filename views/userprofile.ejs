@@ -1,0 +1,73 @@
+<%- include("./partials/header.ejs") %>
+
+    <div class="bg-[#2B0404] text-white p-4" id="userProfile">
+        <!-- Header -->
+        <h1 class="text-center text-lg font-bold">Aktuell medlemsnivå: Filmguru</h1>
+
+        <!-- Grid Layout -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto mt-6">
+            <!-- Profile Card -->
+            <div class="bg-white text-black p-4 rounded-lg shadow-lg">
+                <h2 class="font-bold text-lg text-center text-xl">Profilsida</h2>
+                <div class="flex flex-col items-center">
+                    <img src="https://img.freepik.com/free-vector/modern-login-page-template-with-blur-background_1017-33514.jpg"
+                        alt="User Image" class="rounded-full w-32 h-32 my-2">
+                    <div class="mt-4 w-full text-center">
+                        <label class="block text-sm text-gray-700 font-bold" for="username">Användarnamn</label>
+                        <p class="text-gray-700" id="username"></p>
+                    </div>
+                </div>
+                <div class="mt-4 text-sm">
+                    <div class="mt-4 w-full">
+                        <label class="block text-sm text-gray-700 font-bold" for="fullName">Namn:</label>
+                        <span id="fullName"></span>
+                        <div class="border-t border-[#CFCFCF] my-2"></div>
+                    </div>
+                    <div class="mt-4 w-full">
+                        <label class="block text-sm text-gray-700 font-bold" for="phone">Telefonnummer:</label>
+                        <span id="phone"></span>
+                        <div class="border-t border-[#CFCFCF] my-2"></div>
+                    </div>
+                    <div class="mt-4 w-full">
+                        <label class="block text-sm text-gray-700 font-bold" for="email">Email:</label>
+                        <span id="email"></span>
+                        <div class="border-t border-[#CFCFCF] my-2"></div>
+                    </div>
+                    <div class="mt-4 w-full">
+                        <label class="block text-sm text-gray-700 font-bold" for="password">Lösenord:</label>
+                        <p>************</p>
+                        <div class="border-t border-[#CFCFCF] my-2"></div>
+                    </div>
+                </div>
+                <div class="flex justify-center mt-4">
+                    <button id="logoutButton" class="w-full sm:w-auto px-5 py-2.5 text-black bg-[#FF4D4D] hover:bg-[#FF1A1A] focus:ring-4 focus:outline-none focus:ring-[#FF8080] font-bold rounded-lg text-sm text-center">
+                        Logga ut
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tickets and Weekly Offer in the Right Column -->
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Tickets -->
+                <div class="bg-white text-black p-4 rounded-lg shadow-lg flex flex-col">
+                    <h2 class="font-bold text-center text-xl pb-2">Dina biljetter</h2>
+                    <p class="mt-2 text-center border-b border-[#CFCFCF]">x2 Forrest Gump</p>
+                    <div class="mt-auto flex justify-center items-center w-full cursor-pointer text-lg">
+                        <span class="text-gray-600 mr-2">Historik</span>
+                        <img src="/static/dist/images/dropdown.png" class="w-5 h-5" alt="Knapp för att expandera historik">
+                    </div>
+                </div>
+
+                <!-- Weekly Offer -->
+                <div class="bg-white text-black p-4 rounded-lg shadow-lg flex-col">
+                    <h2 class="font-bold text-center text-xl pb-2">Veckans erbjudande</h2>
+                    <p class="mt-2 text-center border-b border-[#CFCFCF]">2 små läsk för priset av 1!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center mt-4">
+        <a href="/" class="w-full sm:w-auto px-5 py-2.5 text-black bg-[#FFC342] hover:bg-[#FFB108] focus:ring-4 focus:outline-none focus:ring-[#a7c7ff] font-bold rounded-lg text-sm text-center">Tillbaka till startsidan</a>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>

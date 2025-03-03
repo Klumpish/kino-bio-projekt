@@ -74,6 +74,10 @@ function initApp(api) {
     response.render('login.ejs');
   });
 
+  app.get('/userprofile', async (request, response) => {
+    response.render('userprofile.ejs');
+  });
+
   app.get('/signup', async (request, response) => {
     response.render('signup.ejs');
   });
