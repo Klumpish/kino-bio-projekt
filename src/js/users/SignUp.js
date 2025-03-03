@@ -53,12 +53,13 @@ export default class SignUp {
     }
 
     form.addEventListener('submit', async (event) => {
+      event.preventDefault();
       if (passwordInput.value !== confirmPasswordInput.value) {
         passwordWarning.innerText = 'Lösenordet matchar inte';
         passwordWarning.classList.remove('hidden');
         return;
       } else {
-        passwordWarning.innerText = ''; // Clear the warning
+        passwordWarning.innerText = '';
         passwordWarning.classList.add('hidden');
       }
 
@@ -73,13 +74,10 @@ export default class SignUp {
 
       console.log('Sending data to localStorage:', userData);
 
-      // Store data in localStorage
       localStorage.setItem('userData', JSON.stringify(userData));
 
-      // Display the custom modal
       this.showCustomModal();
       this.resetForm(form);
-      event.preventDefault();
     });
   }
 
