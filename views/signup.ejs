@@ -1,6 +1,6 @@
 <%- include("./partials/header.ejs") %>
 
-<div class="flex bg-[#2B0404] min-h-screen w-full items-center justify-center p-4">
+<div class="flex bg-[#2B0404] min-h-screen w-full items-center justify-center p-4" id="signupForm">
     <div class="w-full max-w-7xl bg-[#2B0404] rounded-lg shadow border-[0.1875rem] border-[#DCDCDC] p-6 md:p-8">
         <h1 class="text-2xl md:text-3xl font-bold text-[#DCDCDC] text-center mb-8">
             Logga in
@@ -39,6 +39,7 @@
                     <label for="confirm-password" class="block mb-2 text-sm font-medium text-[#DCDCDC]">Bekräfta lösenord</label>
                     <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••" class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600" required>
                 </div>
+                <p class="text-[#DCDCDC] hidden" id="passwordWarning">Lösenordet matchar inte</p>
             </div>
             <div class="flex flex-col items-center mt-6 space-y-4">
                 <div class="flex items-start">
@@ -56,5 +57,15 @@
         </form>
     </div>
 </div>
-
+<div class=""></div>
+<div id="customModal" class="fixed inset-0 bg-[#2B0404] bg-opacity-75 flex items-center justify-center z-50 hidden" >
+    <div class="bg-[#2B0404] rounded-lg p-12 shadow-lg relative border-[0.1875rem] border-[#DCDCDC] flex flex-col items-center max-w-2xl w-full">
+      <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 text-4xl cursor-pointer">&times;</button>
+      <img src="/src/assets/images/Rabattstjärna.png" alt="KLART!" >
+      <p class="text-lg font-light text-[#DCDCDC] text-center mb-3">En bekräftelse har skickats till din E-postadress!</p>
+      <p class="text-lg font-light text-[#DCDCDC] text-center mb-6">Du kan nu logga in med dina uppgifter!</p>
+      <button id="loginButton" class="bg-[#FFC342] hover:bg-[#FFB108] text-black font-bold rounded-lg text-lg px-8 py-3 text-center mb-4">Logga in</button>
+    </div>
+  </div>
+  
 <%- include("./partials/footer.ejs") %>
