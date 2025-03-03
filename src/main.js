@@ -22,6 +22,8 @@ import AverageRating from './js/Reviews/AverageRating.js';
 import { IdUtils } from './services/utils/IdUtils.js';
 import TopMoviesFetcher from './js/_topMoviesFetcher.js';
 import TopMoviesRenderer from './js/_topMoviesRenderer.js';
+import SignUp from './js/users/signup.js';
+import LogIn from './js/users/Login.js';
 
 if (document.querySelector('.reviews__container')) {
   const apiBase = 'http://localhost:5080';
@@ -86,3 +88,18 @@ if (window.location.pathname === '/') {
     }
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const signupForm = document.querySelector('#signupForm');
+
+  if (signupForm) {
+    const signingUp = new SignUp();
+    signingUp.initSignUp(signupForm);
+  }
+
+  const loginForm = document.querySelector('#loginForm');
+  if (loginForm) {
+    const loggingIn = new LogIn();
+    loggingIn.initLogin(loginForm);
+  }
+});
