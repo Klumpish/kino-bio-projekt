@@ -25,6 +25,9 @@ import TopMoviesRenderer from './js/_topMoviesRenderer.js';
 import { createLoginForm } from './js/User/login.js';
 import { createRegisterForm } from './js/User/register.js';
 import { showProfile } from './js/User/profile.js';
+//Shoelace
+import '@shoelace-style/shoelace/dist/components/input/input.js';
+import '@shoelace-style/shoelace/dist/components/button/button.js';
 
 if (document.querySelector('.reviews__container')) {
   const apiBase = '';

@@ -1,5 +1,3 @@
-import '@shoelace-style/shoelace/dist/shoelace.js';
-
 export function createRegisterForm() {
   const logInContainer = document.querySelector('.login__container');
   logInContainer.className = 'login__container';
