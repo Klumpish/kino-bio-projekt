@@ -1,62 +1,70 @@
 <%- include("./partials/header.ejs") %>
-<div id="membershipModal" class="ui modal">
-  <div class="ui modal-content">
-    <span class="close" onclick="closeModal('membershipModal')">&times;</span>
-    <h2>Välj alternativ</h2>
-    <button class="ui button" onclick="showSignup()">Registrera</button>
-    <button class="ui button" onclick="showLogin()">Logga In</button>
 
-    <!-- Signup Form -->
-    <div id="signupFormContainer" class="hidden">
-      <h2>Skapa Konto</h2>
-      <form id="signupForm" class="ui form">
-        <div class="field">
-          <label>Användarnamn</label>
-          <input type="text" placeholder="Användarnamn" required />
-        </div>
-        <div class="field">
-          <label>E-post</label>
-          <input type="email" placeholder="E-post" required />
-        </div>
-        <div class="field">
-          <label>Fullständigt namn</label>
-          <input type="text" placeholder="Fullständigt namn" required />
-        </div>
-        <div class="field">
-          <label>Lösenord</label>
-          <input type="password" placeholder="Lösenord" required />
-        </div>
-        <button type="submit" class="ui primary button">Registrera</button>
-      </form>
+
+<div id="membershipModal" class="modal hidden">
+  <div class="modal-content">
+    <i class="close icon" onclick="closeModal('membershipModal')"></i>
+    <h2 class="membership__h2">MEDLEMSKAP</h2>
+    <div id="authButtons" class="ui inverted segment">
+      <button class="ui circular inverted red button" onclick="showLogin()">Logga in</button>
+      <button class="ui circular inverted red button" onclick="showSignup()">Registrera</button>
     </div>
+    
+    <!-- Signup Form -->
+<div id="signupFormContainer" class="hidden">
+  <h2 class="membership__info">Skapa Konto</h2>
+  <form id="signupForm" class="ui form">
+    <div class="field">
+      <label>Användarnamn</label>
+      <div class="ui input">
+        <input type="text" placeholder="Användarnamn" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>E-post</label>
+      <div class="ui input">
+        <input type="email" placeholder="E-post" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Fullständigt namn</label>
+      <div class="ui input">
+        <input type="text" placeholder="Fullständigt namn" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Lösenord</label>
+      <div class="ui input">
+        <input type="password" placeholder="Lösenord" required />
+      </div>
+    </div>
+    <button type="button" class="ui button" onclick="goBack()">Tillbaka</button>
+    <button type="submit" class="ui red basic button">Registrera</button>
+  </form>
+</div>
 
     <!-- Login Form -->
     <div id="loginFormContainer" class="hidden">
-      <h2>Logga in</h2>
-      <form id="loginForm" class="ui form">
+      <h2 class="membership__info">Logga in</h2>
+      <form id="loginForm">
         <div class="field">
-          <label>Användarnamn</label>
-          <input type="text" placeholder="Användarnamn" required />
+          <div class="ui input">
+            <input type="text" placeholder="Användarnamn" required />
+          </div>
+        </div>        <div class="field">
+          <div class="ui input">
+            <input type="password" placeholder="Lösenord" required />
+          </div>
         </div>
-        <div class="field">
-          <label>Lösenord</label>
-          <input type="password" placeholder="Lösenord" required />
-        </div>
-        <button type="submit" class="ui primary button">Logga in</button>
+        <button type="button" class="ui button" onclick="goBack()">Tillbaka</button>
+        <button type="submit" class="ui red basic button">Logga in</button>
       </form>
-    </div>
-
-    <!-- User Profile (after login/register) -->
-    <div id="profileInfoContainer" class="hidden">
-      <h2>Min Profil</h2>
-      <p><strong>Användarnamn:</strong> <span id="profileUsername"></span></p>
-      <p><strong>E-post:</strong> <span id="profileEmail"></span></p>
-      <p><strong>Fullständigt namn:</strong> <span id="profileFullName"></span></p>
-      <button class="ui red button" onclick="logout()">Logga ut</button>
     </div>
   </div>
 </div>
-
 
 
 <section class="topmovies">
@@ -149,65 +157,69 @@
 <%- include("./partials/footer.ejs") %>
 
 <script>
-document.getElementById("membership-link").addEventListener("click", function (e) {
+document.getElementById("membership-link-main").addEventListener("click", function (e) {
   e.preventDefault();
   openModal("membershipModal");
 });
 
-// Function to open the modal
+document.getElementById("membership-link-hamburger").addEventListener("click", function (e) {
+  e.preventDefault();
+  openModal("membershipModal");
+});
+
 function openModal(modalId) {
   document.getElementById(modalId).style.display = "block";
 }
 
-// Function to close the modal
 function closeModal(modalId) {
   document.getElementById(modalId).style.display = "none";
 }
 
-// Show Signup form in modal
 function showSignup() {
   document.getElementById("signupFormContainer").style.display = "block";
   document.getElementById("loginFormContainer").style.display = "none";
+  document.getElementById("authButtons").style.display = "none";
 }
 
-// Show Login form in modal
 function showLogin() {
   document.getElementById("loginFormContainer").style.display = "block";
   document.getElementById("signupFormContainer").style.display = "none";
+  document.getElementById("authButtons").style.display = "none"; 
 }
 
-// Handle form submission for Signup
+function goBack() {
+  document.getElementById("signupFormContainer").style.display = "none";
+  document.getElementById("loginFormContainer").style.display = "none";
+  document.getElementById("authButtons").style.display = "block";
+}
+
 document.getElementById("signupForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  // Get form data and save to localStorage (or make an API request)
   const username = e.target[0].value;
   const email = e.target[1].value;
   const fullName = e.target[2].value;
   const password = e.target[3].value;
 
-  // Store user data in localStorage (you can also use cookies or a backend API here)
+  // Store user data in localStorage
   localStorage.setItem("user", JSON.stringify({ username, email, fullName, password }));
 
-  // Close the modal and redirect to the profile page
   closeModal("membershipModal");
-  window.location.href = "/profile"; // Redirect to the profile page
+  window.location.href = "/profile";
 });
 
-// Handle form submission for Login
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  // Get form data and check against localStorage (or make an API request)
+  // Get form data and check against localStorage
   const username = e.target[0].value;
   const password = e.target[1].value;
 
   const user = JSON.parse(localStorage.getItem("user"));
 
   if (user && user.username === username && user.password === password) {
-    // Successfully logged in, redirect to the profile page
     closeModal("membershipModal");
-    window.location.href = "/profile"; // Redirect to the profile page
+    window.location.href = "/profile";
   } else {
     alert("Invalid username or password. Please try again.");
   }
