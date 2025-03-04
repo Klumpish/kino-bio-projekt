@@ -10,47 +10,22 @@ export default class SignUp {
     const passwordInput = form.querySelector('#password');
     const confirmPasswordInput = form.querySelector('#confirm-password');
     const passwordWarning = form.querySelector('#passwordWarning');
+    const passwordStrengthIndicator = document.createElement('p'); // Skapa en ny indikator
+    passwordStrengthIndicator.classList.add('text-sm', 'mt-2');
+    passwordInput.insertAdjacentElement('afterend', passwordStrengthIndicator); // Lägg den efter lösenordsfältet
 
-    if (namnInput) {
-      namnInput.value = localStorage.getItem('namn') || '';
-      namnInput.addEventListener('input', () => {
-        localStorage.setItem('namn', namnInput.value);
-      });
-    }
+    // Ladda sparade fält från localStorage
+    this.loadFromLocalStorage(namnInput, 'namn');
+    this.loadFromLocalStorage(efternamnInput, 'efternamn');
+    this.loadFromLocalStorage(anvandarnamnInput, 'anvandarnamn');
+    this.loadFromLocalStorage(emailInput, 'email');
+    this.loadFromLocalStorage(phoneInput, 'phone');
 
-    if (efternamnInput) {
-      efternamnInput.value = localStorage.getItem('efternamn') || '';
-      efternamnInput.addEventListener('input', () => {
-        localStorage.setItem('efternamn', efternamnInput.value);
-      });
-    }
-
-    if (anvandarnamnInput) {
-      anvandarnamnInput.value = localStorage.getItem('anvandarnamn') || '';
-      anvandarnamnInput.addEventListener('input', () => {
-        localStorage.setItem('anvandarnamn', anvandarnamnInput.value);
-      });
-    }
-
-    if (emailInput) {
-      emailInput.value = localStorage.getItem('email') || '';
-      emailInput.addEventListener('input', () => {
-        localStorage.setItem('email', emailInput.value);
-      });
-    }
-
-    if (phoneInput) {
-      phoneInput.value = localStorage.getItem('phone') || '';
-      phoneInput.addEventListener('input', () => {
-        localStorage.setItem('phone', phoneInput.value);
-      });
-    }
-
-    if (passwordInput) {
-      passwordInput.addEventListener('input', () => {
-        localStorage.setItem('password', passwordInput.value);
-      });
-    }
+    // Hantera lösenordsinput
+    passwordInput.addEventListener('input', () => {
+      localStorage.setItem('password', passwordInput.value);
+      this.updatePasswordStrength(passwordInput.value, passwordStrengthIndicator);
+    });
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -79,6 +54,30 @@ export default class SignUp {
       this.showCustomModal();
       this.resetForm(form);
     });
+  }
+
+  loadFromLocalStorage(inputElement, key) {
+    if (inputElement) {
+      inputElement.value = localStorage.getItem(key) || '';
+      inputElement.addEventListener('input', () => {
+        localStorage.setItem(key, inputElement.value);
+      });
+    }
+  }
+
+  updatePasswordStrength(password, indicator) {
+    let strength = { text: 'Svagt lösenord', color: 'red' };
+    const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const mediumRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$/;
+
+    if (strongRegex.test(password)) {
+      strength = { text: 'Starkt lösenord', color: 'green' };
+    } else if (mediumRegex.test(password)) {
+      strength = { text: 'Medelstarkt lösenord', color: 'orange' };
+    }
+
+    indicator.textContent = strength.text;
+    indicator.style.color = strength.color;
   }
 
   showCustomModal() {

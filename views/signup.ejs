@@ -33,7 +33,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label for="password" class="block mb-2 text-sm font-medium text-[#DCDCDC]">Lösenord</label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600" required>
+                    <input type="password" name="password" id="password" placeholder="••••••••" 
+                           class="w-full p-2.5 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-primary-600 focus:border-primary-600" required>
+                    <p id="password-strength" class="text-sm mt-2"></p>
                 </div>
                 <div>
                     <label for="confirm-password" class="block mb-2 text-sm font-medium text-[#DCDCDC]">Bekräfta lösenord</label>
@@ -58,14 +60,14 @@
     </div>
 </div>
 <div class=""></div>
-<div id="customModal" class="fixed inset-0 bg-[#2B0404] bg-opacity-75 flex items-center justify-center z-50 hidden" >
-    <div class="bg-[#2B0404] rounded-lg p-12 shadow-lg relative border-[0.1875rem] border-[#DCDCDC] flex flex-col items-center max-w-2xl w-full">
-      <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 text-4xl cursor-pointer">&times;</button>
-      <img src="/static/dist/images/confirmation_message.jpg" alt="KLART!" >
-      <p class="text-lg font-light text-[#DCDCDC] text-center mb-3">En bekräftelse har skickats till din E-postadress!</p>
-      <p class="text-lg font-light text-[#DCDCDC] text-center mb-6">Du kan nu logga in med dina uppgifter!</p>
-      <button id="loginButton" class="bg-[#FFC342] hover:bg-[#FFB108] text-black font-bold rounded-lg text-lg px-8 py-3 text-center mb-4">Logga in</button>
+<div id="customModal" class="fixed inset-0 bg-[#2B0404] bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-[#2B0404] rounded-lg p-8 shadow-lg relative border-[0.1875rem] border-[#DCDCDC] flex flex-col items-center max-w-lg w-full">
+        <button id="closeModal" class="absolute top-3 right-3 text-gray-400 hover:text-gray-500 text-3xl cursor-pointer">&times;</button>
+        <img src="/static/dist/images/confirmation_message.jpg" alt="KLART!" class="w-32 mb-4">
+        <p class="text-md font-light text-[#DCDCDC] text-center mb-2">En bekräftelse har skickats till din E-postadress!</p>
+        <p class="text-md font-light text-[#DCDCDC] text-center mb-4">Du kan nu logga in med dina uppgifter!</p>
+        <button id="loginButton" class="bg-[#FFC342] hover:bg-[#FFB108] text-black font-bold rounded-lg text-md px-6 py-2 text-center">Logga in</button>
     </div>
-  </div>
+</div>
 
 <%- include("./partials/footer.ejs") %>
