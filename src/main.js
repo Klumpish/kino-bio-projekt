@@ -24,10 +24,12 @@ import TopMoviesFetcher from './js/_topMoviesFetcher.js';
 import TopMoviesRenderer from './js/_topMoviesRenderer.js';
 import { createLoginForm } from './js/User/login.js';
 import { createRegisterForm } from './js/User/register.js';
-import { showProfile } from './js/User/profile.js';
+import { showProfile, loginCheck } from './js/User/profile.js';
+
 //Shoelace
 import '@shoelace-style/shoelace/dist/components/input/input.js';
 import '@shoelace-style/shoelace/dist/components/button/button.js';
+import '@shoelace-style/shoelace/dist/themes/light.css';
 
 if (document.querySelector('.reviews__container')) {
   const apiBase = '';
@@ -95,10 +97,12 @@ if (window.location.pathname === '/') {
 
 if (window.location.pathname === '/loginM') {
   createLoginForm();
+  loginCheck();
 }
 
 if (window.location.pathname === '/registerM') {
   createRegisterForm();
+  loginCheck();
 }
 
 if (window.location.pathname === '/profile') {

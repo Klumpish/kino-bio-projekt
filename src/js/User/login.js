@@ -32,6 +32,14 @@ export function createLoginForm() {
   button.type = 'submit';
   button.textContent = 'Logga in';
 
+  const h2Msg = document.createElement('h2');
+  h2Msg.textContent = 'Inte medlem? Registrera dig ';
+  h2Msg.className = 'login__msg';
+  const h2Link = document.createElement('a');
+  h2Link.textContent = 'här!';
+  h2Msg.append(h2Link);
+  h2Link.href = '/registerM';
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     errorDiv.textContent = '';
@@ -68,6 +76,6 @@ export function createLoginForm() {
       errorDiv.textContent = 'An error occurred during login.';
     }
   });
-  form.append(h1, userField, passwordField, h2_pswrd, errorDiv, button);
+  form.append(h1, userField, passwordField, h2_pswrd, errorDiv, button, h2Msg);
   logInContainer.append(form);
 }

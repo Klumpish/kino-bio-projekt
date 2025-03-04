@@ -49,10 +49,12 @@ export function createRegisterForm() {
   button.textContent = 'Skapa konto';
 
   const h2Msg = document.createElement('h2');
-  h2Msg.textContent = 'Redan medlem? Logga in här!';
+  h2Msg.textContent = 'Redan medlem? Logga in ';
   h2Msg.className = 'login__msg';
   const h2Link = document.createElement('a');
-  h2Msg.href = '/loginM';
+  h2Link.textContent = 'här!';
+  h2Msg.append(h2Link);
+  h2Link.href = '/loginM';
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();

@@ -6,6 +6,10 @@ export function showProfile() {
 
   if (!token || token === '' || token === 'undefined' || token === null) {
     profileContainer.innerHTML = '<p>Du är inte inloggad.</p>';
+    // Redirect to login page
+    setTimeout(() => {
+      window.location.href = '/loginM';
+    }, 2000);
     return;
   }
 
@@ -48,5 +52,14 @@ export function showProfile() {
     .catch((error) => {
       console.error('Error fetching user profile:', error);
       profileContainer.innerHTML = '<p>Kunde inte hämta din profil.</p>';
+      setTimeout(() => {
+        window.location.href = '/loginM';
+      }, 2000);
     });
+}
+
+export function loginCheck() {
+  if (localStorage.getItem('token')) {
+    window.location.href = '/profile';
+  }
 }
