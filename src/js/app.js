@@ -66,13 +66,17 @@ function initApp(api) {
     }
   });
 
-  app.get('/about-us', async (request, response) => {
+   app.get('/about-us', async (request, response) => {
     response.render('about-us.ejs');
-  });
+  }); 
 
   app.get('/movies', async (request, response) => {
     const movies = await api.loadMovies();
     response.render('movies.ejs', { movies });
+  });
+
+  app.get('/profile', async (request, response) => {
+    response.render('profile');
   });
 
   // single movie page
