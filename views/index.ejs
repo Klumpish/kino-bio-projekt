@@ -1,6 +1,6 @@
 <%- include("./partials/header.ejs") %>
 
-
+  <!--Membership Modal -->
 <div id="membershipModal" class="modal hidden">
   <div class="modal-content">
     <i class="close icon" onclick="closeModal('membershipModal')"></i>
@@ -192,7 +192,7 @@ function goBack() {
   document.getElementById("loginFormContainer").style.display = "none";
   document.getElementById("authButtons").style.display = "block";
 }
-
+// User puts in data when signing up. 
 document.getElementById("signupForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -201,7 +201,7 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
   const fullName = e.target[2].value;
   const password = e.target[3].value;
 
-  // Store user data in localStorage
+  // Store user data in localStorage.
   localStorage.setItem("user", JSON.stringify({ username, email, fullName, password }));
 
   closeModal("membershipModal");
@@ -211,7 +211,7 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  // Get form data and check against localStorage
+  // Get form data and check against localStorage.
   const username = e.target[0].value;
   const password = e.target[1].value;
 
