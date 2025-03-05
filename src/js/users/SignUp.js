@@ -10,18 +10,16 @@ export default class SignUp {
     const passwordInput = form.querySelector('#password');
     const confirmPasswordInput = form.querySelector('#confirm-password');
     const passwordWarning = form.querySelector('#passwordWarning');
-    const passwordStrengthIndicator = document.createElement('p'); // Skapa en ny indikator
+    const passwordStrengthIndicator = document.createElement('p');
     passwordStrengthIndicator.classList.add('text-sm', 'mt-2');
-    passwordInput.insertAdjacentElement('afterend', passwordStrengthIndicator); // Lägg den efter lösenordsfältet
+    passwordInput.insertAdjacentElement('afterend', passwordStrengthIndicator);
 
-    // Ladda sparade fält från localStorage
     this.loadFromLocalStorage(namnInput, 'namn');
     this.loadFromLocalStorage(efternamnInput, 'efternamn');
     this.loadFromLocalStorage(anvandarnamnInput, 'anvandarnamn');
     this.loadFromLocalStorage(emailInput, 'email');
     this.loadFromLocalStorage(phoneInput, 'phone');
 
-    // Hantera lösenordsinput
     passwordInput.addEventListener('input', () => {
       localStorage.setItem('password', passwordInput.value);
       this.updatePasswordStrength(passwordInput.value, passwordStrengthIndicator);
