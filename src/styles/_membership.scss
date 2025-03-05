@@ -38,7 +38,7 @@ i.icon, i.icons {
 .profile__layout {
   display: grid;                
   grid-template-columns: 1fr 1fr; 
-  grid-template-rows: auto 1fr 1fr;
+  grid-template-rows: auto 1fr;
   gap: 20px;  
   grid-template-areas:
     "card tickets"       
@@ -48,7 +48,7 @@ i.icon, i.icons {
 
 .ui.card {
   grid-area: card;
-  width: 80%; 
+  max-width: 25rem;
 }
 
 .tickets__div {
@@ -95,4 +95,14 @@ i.icon, i.icons {
   width: 200px;
   height: 200px; 
   margin-top: 10px;
+}
+
+@media (max-width: 800px)
+
+{
+  .profile__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 }
