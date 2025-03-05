@@ -39,6 +39,7 @@
       <label>Lösenord</label>
       <div class="ui input">
         <input type="password" placeholder="Lösenord" required />
+        <div id="passwordSafe"></div>
       </div>
     </div>
     <button type="button" class="ui button" onclick="goBack()">Tillbaka</button>
@@ -201,12 +202,22 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
   const fullName = e.target[2].value;
   const password = e.target[3].value;
 
+  if (!isStrongPassword(password)) {
+  alert("Lösenordet måste innehålla minst 8 tecken!");
+  return;
+}
   // Store user data in localStorage.
   localStorage.setItem("user", JSON.stringify({ username, email, fullName, password }));
 
   closeModal("membershipModal");
   window.location.href = "/profile";
 });
+
+function isStrongPassword(password) {
+  return password.length >= 8;
+
+  return "Bra";
+}
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
