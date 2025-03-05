@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/dist/compiledCSS.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <!-- <link rel="stylesheet" href="/static/dist/compiledCSS.css" /> -->
     <title>Kino-bio-page</title>
   </head>
   <body>
@@ -21,7 +22,9 @@
         <li class="hamburger__list"><a href="#">BILJETTER</a></li>
         <li class="hamburger__list"><a href="#">EVENEMANG</a></li>
         <li class="hamburger__list"><a href="/movies">FILMER</a></li>
-        <li class="hamburger__list"><a href="#">MEDLEMSKAP</a></li>
+        <li class="hamburger__list">
+          <a id="membership-link-hamburger" href="#" class="header__nav-link">MEDLEMSKAP</a>
+        </li>
         <li class="hamburger__list"><a href="/about-us">OM OSS</a></li>
       </ul>
 
@@ -38,7 +41,7 @@
             <a href="/movies" class="header__nav-link" aria-label="Go to Filmer">FILMER</a>
           </li>
           <li class="header__nav-item">
-            <a href="#" class="header__nav-link" aria-label="Go to Medlemskap">MEDLEMSKAP</a>
+            <a id="membership-link-main" href="#" class="header__nav-link">MEDLEMSKAP</a>
           </li>
           <li class="header__nav-item">
             <a href="/about-us" class="header__nav-link" aria-label="Go to Om oss">OM OSS</a>

@@ -1,4 +1,73 @@
-<%- include("./partials/header.ejs") %>0
+<%- include("./partials/header.ejs") %>
+
+  <!--Membership Modal -->
+<div id="membershipModal" class="modal hidden">
+  <div class="modal-content">
+    <i class="close icon" onclick="closeModal('membershipModal')"></i>
+    <h2 class="membership__h2">MEDLEMSKAP</h2>
+    <div id="authButtons" class="ui inverted segment">
+      <button class="ui circular inverted red button" onclick="showLogin()">Logga in</button>
+      <button class="ui circular inverted red button" onclick="showSignup()">Registrera</button>
+    </div>
+    
+    <!-- Signup Form -->
+<div id="signupFormContainer" class="hidden">
+  <h2 class="membership__info">Skapa Konto</h2>
+  <form id="signupForm" class="ui form">
+    <div class="field">
+      <label>Användarnamn</label>
+      <div class="ui input">
+        <input type="text" placeholder="Användarnamn" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>E-post</label>
+      <div class="ui input">
+        <input type="email" placeholder="E-post" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Fullständigt namn</label>
+      <div class="ui input">
+        <input type="text" placeholder="Fullständigt namn" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Lösenord</label>
+      <div class="ui input">
+        <input type="password" placeholder="Lösenord" required />
+        <div id="passwordSafe"></div>
+      </div>
+    </div>
+    <button type="button" class="ui button" onclick="goBack()">Tillbaka</button>
+    <button type="submit" class="ui red basic button">Registrera</button>
+  </form>
+</div>
+
+    <!-- Login Form -->
+    <div id="loginFormContainer" class="hidden">
+      <h2 class="membership__info">Logga in</h2>
+      <form id="loginForm">
+        <div class="field">
+          <div class="ui input">
+            <input type="text" placeholder="Användarnamn" required />
+          </div>
+        </div>        <div class="field">
+          <div class="ui input">
+            <input type="password" placeholder="Lösenord" required />
+          </div>
+        </div>
+        <button type="button" class="ui button" onclick="goBack()">Tillbaka</button>
+        <button type="submit" class="ui red basic button">Logga in</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 <section class="topmovies">
   <h2 class="topmovies__header">TOPPLISTA PÅ KINO</h2>
   <ul class="topmovies__list">
@@ -87,3 +156,83 @@
   <img src="/static/dist/images/Kino_seats.png" alt="Image of the auditorium seats" class="features__image_2" />
 </section>
 <%- include("./partials/footer.ejs") %>
+
+<script>
+document.getElementById("membership-link-main").addEventListener("click", function (e) {
+  e.preventDefault();
+  openModal("membershipModal");
+});
+
+document.getElementById("membership-link-hamburger").addEventListener("click", function (e) {
+  e.preventDefault();
+  openModal("membershipModal");
+});
+
+function openModal(modalId) {
+  document.getElementById(modalId).style.display = "block";
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = "none";
+}
+
+function showSignup() {
+  document.getElementById("signupFormContainer").style.display = "block";
+  document.getElementById("loginFormContainer").style.display = "none";
+  document.getElementById("authButtons").style.display = "none";
+}
+
+function showLogin() {
+  document.getElementById("loginFormContainer").style.display = "block";
+  document.getElementById("signupFormContainer").style.display = "none";
+  document.getElementById("authButtons").style.display = "none"; 
+}
+
+function goBack() {
+  document.getElementById("signupFormContainer").style.display = "none";
+  document.getElementById("loginFormContainer").style.display = "none";
+  document.getElementById("authButtons").style.display = "block";
+}
+// User puts in data when signing up. 
+document.getElementById("signupForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const username = e.target[0].value;
+  const email = e.target[1].value;
+  const fullName = e.target[2].value;
+  const password = e.target[3].value;
+
+  if (!isStrongPassword(password)) {
+  alert("Lösenordet måste innehålla minst 8 tecken!");
+  return;
+}
+  // Store user data in localStorage.
+  localStorage.setItem("user", JSON.stringify({ username, email, fullName, password }));
+
+  closeModal("membershipModal");
+  window.location.href = "/profile";
+});
+
+function isStrongPassword(password) {
+  return password.length >= 8;
+
+  return "Bra";
+}
+
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // Get form data and check against localStorage.
+  const username = e.target[0].value;
+  const password = e.target[1].value;
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (user && user.username === username && user.password === password) {
+    closeModal("membershipModal");
+    window.location.href = "/profile";
+  } else {
+    alert("Invalid username or password. Please try again.");
+  }
+});
+</script>

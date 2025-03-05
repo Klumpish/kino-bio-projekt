@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:node\"",
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
@@ -58,6 +58,8 @@
     "jsonwebtoken": "^9.0.2",
     "marked": "^15.0.6",
     "node-fetch": "^3.3.2",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.5"
   }
 }

@@ -1,0 +1,108 @@
+@use 'variables' as *;
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+}
+
+.ui.basic.red.button { 
+  margin-top: 1rem;
+}
+
+.ui.inverted.red.button, 
+.ui.inverted.red.buttons {
+  margin: 0.5rem;
+}
+
+i.icon, i.icons {
+  font-size: 1.6rem;
+}
+
+.membership__h2 {
+  color: #2b0404;
+}
+
+.membership__info {
+  font-size: 1.3rem; 
+}
+
+.ui.card {
+  margin-left: 2rem;
+}
+
+.profile__layout {
+  display: grid;                
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: auto 1fr;
+  gap: 20px;  
+  grid-template-areas:
+    "card tickets"       
+    "card offers"; 
+  margin: 20px; 
+}
+
+.ui.card {
+  grid-area: card;
+  max-width: 25rem;
+}
+
+.tickets__div {
+  grid-area: tickets; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #cdcdcd;
+  margin-top: 1rem;
+}
+
+.tickets__info {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.ticket__p {
+  margin-left: 10px;
+  font-size: 1.5rem;
+}
+
+.ticket.alternate.icon {
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+
+.offers__div {
+  color: #cdcdcd;
+  grid-area: offers;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+  text-align: center;
+}
+
+.offers__h1 {
+  margin-bottom: 15px;
+}
+
+.ui.small.circular.rotate.reveal.image {
+  width: 200px;
+  height: 200px; 
+  margin-top: 10px;
+}
+
+@media (max-width: 800px)
+
+{
+  .profile__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

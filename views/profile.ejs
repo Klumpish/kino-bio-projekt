@@ -1,0 +1,54 @@
+<%- include("./partials/header.ejs") %>
+<div class="profile__layout">
+    <div class="ui card">
+        <div class="ui image">
+            <img src="/static/dist/images/Member.png">
+        </div>
+        <div class="content">
+            <p><strong>Användarnamn:</strong> <span id="username"></span></p>
+            <p><strong>E-post:</strong> <span id="email"></span></p>
+            <p><strong>Fullständigt namn:</strong> <span id="fullName"></span></p>
+        </div>
+        <div class="extra content">
+            <a>
+              <i class="user icon"></i>
+              Aktuell medlemsnivå: Popcorn
+            </a>
+        </div>
+        <button class="ui button" onclick="logout()">Logga ut</button>
+    </div>
+
+    <div class="tickets__div">
+        <h1 class="ticket__h1">Dina biljetter</h1>
+
+        <div class="tickets__info">
+        <i class="ticket alternate icon"></i>
+        <p class="ticket__p">x2 Forrest Gump</p>
+        </div>
+    </div>
+    <div class="offers__div">
+        <h1 class="offers__h1">Dina erbjudanden</h1>
+        <div class="ui small circular rotate reveal image">
+            <img src="/static/dist/images/Surprise.png" class="visible content">
+            <img src="/static/dist/images/popcorn.png" class="hidden content">
+        </div>
+    </div>
+</div>
+
+<script>
+  // User info will show when the user is logged in.
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user) {
+    document.getElementById("username").textContent = user.username;
+    document.getElementById("email").textContent = user.email;
+    document.getElementById("fullName").textContent = user.fullName;
+  } else {
+    window.location.href = "/";
+  }
+
+function logout() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "/";
+}
+</script>
+<%- include("./partials/footer.ejs") %>
