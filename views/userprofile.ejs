@@ -1,13 +1,10 @@
 <%- include("./partials/header.ejs") %>
 
     <div class="bg-[#2B0404] text-white p-4" id="userProfile">
-        <!-- Header -->
         <h1 class="text-center text-lg font-bold">Aktuell medlemsnivå: Filmguru</h1>
 
-        <!-- Grid Layout -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto mt-6">
-            <!-- Profile Card -->
-            <div class="bg-white text-black p-4 rounded-lg shadow-lg">
+            <section class="bg-white text-black p-4 rounded-lg shadow-lg">
                 <h2 class="font-bold text-lg text-center text-xl">Profilsida</h2>
                 <div class="flex flex-col items-center">
                     <img src="https://img.freepik.com/free-vector/modern-login-page-template-with-blur-background_1017-33514.jpg"
@@ -40,30 +37,27 @@
                     </div>
                 </div>
                 <div class="flex justify-center mt-4">
-                    <button id="logoutButton" class="w-full sm:w-auto px-5 py-2.5 text-black bg-[#FF4D4D] hover:bg-[#FF1A1A] focus:ring-4 focus:outline-none focus:ring-[#FF8080] font-bold rounded-lg text-sm text-center">
+                    <button id="logoutButton" class="w-full sm:w-auto px-5 py-2.5 text-black bg-[#FF4D4D] hover:bg-[#FF1A1A] focus:ring-4 focus:outline-none focus:ring-[#FF8080] font-bold rounded-lg text-sm text-center" aria-label="Logga ut från användarkontot">
                         Logga ut
                     </button>
                 </div>
-            </div>
+            </section>
 
-            <!-- Tickets and Weekly Offer in the Right Column -->
-            <div class="grid grid-cols-1 gap-4">
-                <!-- Tickets -->
+            <section class="grid grid-cols-1 gap-4">
                 <div class="bg-white text-black p-4 rounded-lg shadow-lg flex flex-col">
                     <h2 class="font-bold text-center text-xl pb-2">Dina biljetter</h2>
                     <p class="mt-2 text-center border-b border-[#CFCFCF]">x2 Forrest Gump</p>
                     <div class="mt-auto flex justify-center items-center w-full cursor-pointer text-lg">
                         <span class="text-gray-600 mr-2">Historik</span>
-                        <img src="/static/dist/images/dropdown.png" class="w-5 h-5" alt="Knapp för att expandera historik">
+                        <img src="/static/dist/images/dropdown.png" class="w-5 h-5" alt="Expandera historik" aria-label="Expandera historik">
                     </div>
                 </div>
 
-                <!-- Weekly Offer -->
                 <div class="bg-white text-black p-4 rounded-lg shadow-lg flex-col">
                     <h2 class="font-bold text-center text-xl pb-2">Veckans erbjudande</h2>
                     <p class="mt-2 text-center border-b border-[#CFCFCF]">2 små läsk för priset av 1!</p>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
     <div class="flex justify-center mt-4">
